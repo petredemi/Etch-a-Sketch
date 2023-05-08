@@ -1,0 +1,19 @@
+body {
+    margin: 10px;
+}
+
+.container {
+    display: inline-grid;
+    grid-gap: 2px;
+    padding: 5px;
+}
+.container div {
+    border: 1px solid red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+    background-color: aquamarine;
+
+}
