@@ -2,13 +2,13 @@
 
 
 
-let canvas = 5;
+let canvas = 50;
 let divs = '';
 
 function rest(){
     arr.forEach((divs) => {
     divs.classList.remove('col');
-    divs.textContent = '';
+ //   divs.textContent = '';
 });
 }
 
@@ -26,14 +26,12 @@ function  hovering(){
         container.appendChild (divs);
 
 
-       divs.addEventListener('mouseover', (e) => {
-            e.target.classList.add('col'); 
-            e.target.textContent = "ds";  
+        divs.addEventListener('mouseover', (e) => {
+                e.target.classList.add('col')
 
-        });
+            });
+
         divs.addEventListener('click', (e) => {
-    
-            e.target.textContent = '';
             e.target.classList.remove('col');
         });
     }      
