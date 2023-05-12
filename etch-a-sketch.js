@@ -2,7 +2,7 @@
 
 
 
-let canvas = 50;
+let canvas = 30;
 let divs = '';
 
 function rest(){
