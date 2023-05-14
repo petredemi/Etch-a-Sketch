@@ -16,9 +16,13 @@
 
         </div>
         <div class = 'control'>
-            <button id = 'input'>choose pixels </button>
-            <button id = 'color'> pen color</button>
-            <button id = 'btn'>Clear Canvas</button>
+            <label for = 'pixels'>choose pixels: </lable>
+            <input id = 'pixels' type = 'range' name= 'pixels' min= '2' max="64" value= '10' data-sizing = ''>
+
+            <label for = 'pen'>Pen Color:</label>
+            <input id = 'pen' type = 'color' name = 'pen' value = '#40bf84'>
+
+            <button type = 'reset' id = 'btn'>Clear Canvas</button>
         </div>
 
     <script>
@@ -27,4 +31,3 @@
     </script>
 
     </body>
-</html>
