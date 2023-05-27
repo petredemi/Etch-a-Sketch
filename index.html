@@ -6,9 +6,10 @@
     <link rel = "stylesheet" href = etch-a-sketch.css>
     <script src="etch-a-sketch.js" defer> </script> 
 </head>
-    <body>
+<body>
         
-        <h1>Etch-A-Sketch</h1>
+    <h1>Etch-A-Sketch</h1>
+    <div class = 'mycanvas'>    
         <div class = 'canvas'>
             
             <div class = 'container'>
@@ -16,18 +17,28 @@
 
         </div>
         <div class = 'control'>
-            <label for = 'pixels'>choose pixels: </lable>
-            <input id = 'pixels' type = 'range' name= 'pixels' min= '2' max="64" value= '10' data-sizing = ''>
-
+            <label for = 'pixels'>Pixels: </label>
+            <input  type = 'number' id = 'pixels' min= '4' max= '64' value = '20' >
+            
+            <label for = 'grid'>Grid Border: </label>
+            <input  type = 'number' id = 'grid' name= 'grid' min= '0.0' max= '4' value= '0.3' data-sizing = 'px' >
+    
             <label for = 'pen'>Pen Color:</label>
-            <input id = 'pen' type = 'color' name = 'pen' value = '#40bf84'>
+            <input type = 'color' id = 'pen'  name = 'pen' value = '#40bf84'>
+            
+            <label for = 'back'>Background</label>
+            <input  type = 'color' id = 'back' name = 'back'  value = '#f5abab'>
 
             <button type = 'reset' id = 'btn'>Clear Canvas</button>
         </div>
+        <p id = 'demo'></p>
+        <button onclick= 'a()' >press</button>
 
+    </div>
+    
     <script>
 
-
+    
     </script>
 
-    </body>
+</body>
