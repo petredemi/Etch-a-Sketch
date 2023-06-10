@@ -1,115 +1,123 @@
 
 
-let divs = '';
-let canvas = 50;
+let divs;
+let canvas;
+let arr;
 
 const btn = document.querySelector('#btn');
-const pixels = document.querySelector('#pixels');
-const inputs = document.querySelectorAll('#grid, #pan, #back');
+let pixels = document.querySelector('#pixels');
+const inputs = document.querySelectorAll('#pixels, #grid, #pen, #back, #rainbow');
 const control = document.querySelector('.mycanvas > .control');
-const container = document.querySelector('.container');
-
+let container = document.querySelector('.canvas > .container');
+let rainbow = document.querySelector('#rainbow');
 
 pa = document.createElement('div');
 pa.classList.add('numb');
 control.appendChild(pa);
-const numb = document.querySelector('.container > .numb');
-let b;
 
 
-//pixels.addEventListener('change', pixelUpdate);
-
-//pixels.addEventListener('change', () => {
-  //  document.getElementById('demo').innerHTML = pixels.value;
-    //canvas = document.getElementById('demo').innerHTML;
-
-    //return canvas;
-//});
-function a(){
-    var  x = document.getElementById('pixels').value;
-    document.getElementById('demo').innerHTML = x;
-    
-}
-
-const changeV = () => {
-    pa.textContent = pixels.value;
-    canvas = this.pixels.value;
- //   document.documentElement.setProperty(`--${this.name}`, this.value);
-
-    return canvas;
-
-  //  console.log(canvas);
-}
 function rest(){
     arr.forEach((divs) => {
     divs.classList.remove('col');
-   // container.remove('div');
-    pixels.value = 20;
+    divs.classList.remove('rainbow');
     pa.textContent = 20;
-});
+    });
 } 
-function ad(){
-    divs.classList.add('col');
-}
 
-function handelUpdate() {
-    const suffix = this.dataset.sizing || '';
-    document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix);
+function EAS(){
+    canvas = pixels.value;
+    function handelUpdate() {
+        const suffix = this.dataset .sizing || '';
+        document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix);
+       
+    }
 
-}
-inputs.forEach(input => input.addEventListener('change', handelUpdate));
-inputs.forEach(input => input.addEventListener('click', handelUpdate));
+    inputs.forEach(input => input.addEventListener('change', handelUpdate));
+    inputs.forEach(input => input.addEventListener('mousemove', handelUpdate));
 
+    for( let i = 1; i <= canvas ** 2; i++){
+        container.setAttribute('style', `diplay: grid; grid-template-columns:repeat(${canvas}, 1fr)`);    
 
-function hovering(canvas){
-    container.setAttribute('style', `diplay: grid; grid-template-columns:repeat(${canvas}, 1fr)`);    
-
-    for( let i = 1; i <= canvas * canvas; i++){
         divs = document.createElement('div');
         divs.classList.add('color');
         container.appendChild (divs);
     }
+
+    arr = Array.from(document.querySelectorAll('.color'));
+
+    function a(){
+        let isDown = false;
+
+        arr.forEach((div) => div.addEventListener('mousedown', (e) => {
+            isDown = true;
+            e.target.classList.add('col');
+        }));
+
+        arr.forEach((div) => div.addEventListener('mouseup', (e) => {
+            isDown = false;
+        }));
+
+        arr.forEach((div) => div.addEventListener('mouseenter', (e) => {
+        }));
+
+        arr.forEach((div) => div.addEventListener('click', (e) => {
+            isDown = false;
+            e.target.classList.remove('col');
+        }));
+
+        arr.forEach((div) => div.addEventListener('mouseover', (e) => {
+            if(!isDown) return; //stop function to run
+            e.target.classList.add('col');
+        }));
+    }
+
+    function b(){
+        let isDown = false;
+    
+        arr.forEach((div) => div.addEventListener('mousedown', (e) => {
+            isDown = true;
+            e.target.classList.add('rainbow');
+        }));
+    
+        arr.forEach((div) => div.addEventListener('mouseup', (e) => {
+            isDown = false;
+        }));
+    
+        arr.forEach((div) => div.addEventListener('click', (e) => {
+            isDown = false;
+            e.target.classList.remove('rainbow');
+        }));
+     
+       
+        arr.forEach((div) => div.addEventListener('mouseover', (e) => {
+            if(!isDown) return; //stop function to run
+            e.target.classList.add('rainbow');
+        }));
+    }
+a();
+
+    let p = false;
+
+    pen.addEventListener('click', () => { 
+        p = true;  
+        a(); 
+    });
+    rainbow.addEventListener('click', () => {
+        if (p = false) return;
+        b();
+    });
 }
-changeV();
-pixels.addEventListener('change', changeV);
-//pixels.addEventListener('click', changeV);
 
+EAS();
 
-hovering(canvas);
+pixels.addEventListener('click', () => {
+    arr.forEach((divs) => {
+        container.removeChild(divs);
+    });
+    EAS();
+});
 
-const arr = Array.from(document.querySelectorAll('.color'));
-
-let isDown = false;
-
-arr.forEach((div) => div.addEventListener('mousedown', (e) => {
-    isDown = true;
-    e.target.classList.add('col');
-}));
-
-arr.forEach((div) => div.addEventListener('mouseup', (e) => {
-    isDown = false;
- }));
-
-arr.forEach((div) => div.addEventListener('mouseenter', (e) => {
-
-}));
-arr.forEach((div) => div.addEventListener('click', (e) => {
-    isDown = false;
-    e.target.classList.remove('col');
- //   console.log(isDown);
-
- }));
- 
-arr.forEach((div) => div.addEventListener('mouseover', (e) => {
-    if(!isDown) return; //stop function to run
-    e.target.classList.add('col');
-    console.log(isDown);
-    console.log('do work');
-}));
 btn.addEventListener('click', () => {
     rest();
 });
-
-
-
 
