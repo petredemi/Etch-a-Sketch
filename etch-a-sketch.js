@@ -3,13 +3,16 @@
 let divs;
 let canvas;
 let arr;
+let div;
+let col = document.querySelectorAll('.col');
+
 
 const btn = document.querySelector('#btn');
 let pixels = document.querySelector('#pixels');
-const inputs = document.querySelectorAll('#pixels, #grid, #pen, #back, #rainbow');
+const inputs = document.querySelectorAll('#pixels, #grid, #pen, #back');
 const control = document.querySelector('.mycanvas > .control');
 let container = document.querySelector('.canvas > .container');
-let rainbow = document.querySelector('#rainbow');
+const grid = document.querySelector('#grid');
 
 pa = document.createElement('div');
 pa.classList.add('numb');
@@ -19,22 +22,20 @@ control.appendChild(pa);
 function rest(){
     arr.forEach((divs) => {
     divs.classList.remove('col');
-    divs.classList.remove('rainbow');
-    pa.textContent = 20;
     });
 } 
 
-function EAS(){
+function E_A_S(){
     canvas = pixels.value;
     function handelUpdate() {
         const suffix = this.dataset .sizing || '';
         document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix);
-       
     }
-
-    inputs.forEach(input => input.addEventListener('change', handelUpdate));
-    inputs.forEach(input => input.addEventListener('mousemove', handelUpdate));
-
+    function colors(){
+        inputs.forEach(input => input.addEventListener('change', handelUpdate));
+        inputs.forEach(input => input.addEventListener('click', handelUpdate));
+    }
+    colors();
     for( let i = 1; i <= canvas ** 2; i++){
         container.setAttribute('style', `diplay: grid; grid-template-columns:repeat(${canvas}, 1fr)`);    
 
@@ -45,7 +46,7 @@ function EAS(){
 
     arr = Array.from(document.querySelectorAll('.color'));
 
-    function a(){
+    function onCanvas(){
         let isDown = false;
 
         arr.forEach((div) => div.addEventListener('mousedown', (e) => {
@@ -71,50 +72,16 @@ function EAS(){
         }));
     }
 
-    function b(){
-        let isDown = false;
-    
-        arr.forEach((div) => div.addEventListener('mousedown', (e) => {
-            isDown = true;
-            e.target.classList.add('rainbow');
-        }));
-    
-        arr.forEach((div) => div.addEventListener('mouseup', (e) => {
-            isDown = false;
-        }));
-    
-        arr.forEach((div) => div.addEventListener('click', (e) => {
-            isDown = false;
-            e.target.classList.remove('rainbow');
-        }));
-     
-       
-        arr.forEach((div) => div.addEventListener('mouseover', (e) => {
-            if(!isDown) return; //stop function to run
-            e.target.classList.add('rainbow');
-        }));
-    }
-a();
+    onCanvas();
+}    
 
-    let p = false;
-
-    pen.addEventListener('click', () => { 
-        p = true;  
-        a(); 
-    });
-    rainbow.addEventListener('click', () => {
-        if (p = false) return;
-        b();
-    });
-}
-
-EAS();
+E_A_S();
 
 pixels.addEventListener('click', () => {
     arr.forEach((divs) => {
         container.removeChild(divs);
     });
-    EAS();
+    E_A_S();
 });
 
 btn.addEventListener('click', () => {
