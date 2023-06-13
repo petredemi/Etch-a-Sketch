@@ -70,8 +70,8 @@ button {
 .container {
     display: grid;
     padding: 3px;
-    width: 70vh;
-    height: 70vh;
+    width: 71vh;
+    height: 71vh;
     background-color: var(--back);
 
 }

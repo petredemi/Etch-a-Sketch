@@ -4,22 +4,14 @@ let divs;
 let canvas;
 let arr;
 let div;
-let col = document.querySelectorAll('.col');
-
 
 const btn = document.querySelector('#btn');
 let pixels = document.querySelector('#pixels');
-const inputs = document.querySelectorAll('#pixels, #grid, #pen, #back');
+const inputs = document.querySelectorAll('#grid, #pen, #back');
 const control = document.querySelector('.mycanvas > .control');
 let container = document.querySelector('.canvas > .container');
-const grid = document.querySelector('#grid');
 
-pa = document.createElement('div');
-pa.classList.add('numb');
-control.appendChild(pa);
-
-
-function rest(){
+function clearCanvas(){
     arr.forEach((divs) => {
     divs.classList.remove('col');
     });
@@ -36,6 +28,7 @@ function E_A_S(){
         inputs.forEach(input => input.addEventListener('click', handelUpdate));
     }
     colors();
+
     for( let i = 1; i <= canvas ** 2; i++){
         container.setAttribute('style', `diplay: grid; grid-template-columns:repeat(${canvas}, 1fr)`);    
 
@@ -53,7 +46,6 @@ function E_A_S(){
             isDown = true;
             e.target.classList.add('col');
         }));
-
         arr.forEach((div) => div.addEventListener('mouseup', (e) => {
             isDown = false;
         }));
@@ -62,10 +54,9 @@ function E_A_S(){
         }));
 
         arr.forEach((div) => div.addEventListener('click', (e) => {
-            isDown = false;
             e.target.classList.remove('col');
         }));
-
+        
         arr.forEach((div) => div.addEventListener('mouseover', (e) => {
             if(!isDown) return; //stop function to run
             e.target.classList.add('col');
@@ -84,7 +75,10 @@ pixels.addEventListener('click', () => {
     E_A_S();
 });
 
+
+
+
 btn.addEventListener('click', () => {
-    rest();
+    clearCanvas();
 });
 
