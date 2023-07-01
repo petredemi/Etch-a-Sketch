@@ -3,14 +3,12 @@
 let divs;
 let canvas;
 let arr;
-let div;
 
 const btn = document.querySelector('#btn');
-const pixels = document.querySelector('#pixels');
-const inputs = document.querySelectorAll('#grid, #pen, #back');
+const pixelsNumber = document.querySelector('#pixels');
+const inputs = document.querySelectorAll('#grid, #back');
 const pen = document.querySelector('#pen');
 let container = document.querySelector('.canvas > .container');
-const grid = document.querySelector('#grid');
 const rainbow = document.querySelector('#rainbow');
 const rbw = ['red', 'yellow', 'green', 'blue', 'pink', 'orange'];
 
@@ -30,11 +28,11 @@ function E_A_S(){
         const suffix = this.dataset .sizing || '';
         document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix);
     }
-    function colors(){
+    function divBorderBackground(){
         inputs.forEach(input => input.addEventListener('change', handelUpdate));
-     //   inputs.forEach(input => input.addEventListener('click', handelUpdate));
+        inputs.forEach(input => input.addEventListener('click', handelUpdate));
     }
-    colors();
+    divBorderBackground();
 
     for( let i = 1; i <= canvas ** 2; i++){
         container.setAttribute('style', `diplay: grid; grid-template-columns:repeat(${canvas}, 1fr)`);    
@@ -45,7 +43,7 @@ function E_A_S(){
 
     arr = Array.from(document.querySelectorAll('.color'));
 
-    function a(e){
+ /*   function a(e){
         let isDown = false;
 
         arr.forEach((div) => div.addEventListener('mousedown', (e) => {
@@ -70,7 +68,33 @@ function E_A_S(){
             e.target.classList.add('col');
         }));
     }
-    function b(){
+    */
+    function penColor(){
+        let isDown = false;
+    
+        arr.forEach((div) => div.addEventListener('mousedown', (e) => {
+            isDown = true;
+            div.style.backgroundColor = `${pen.value}`;
+
+        }));
+    
+        arr.forEach((div) => div.addEventListener('mouseup', (e) => {
+            isDown = false;
+        }));
+    
+        arr.forEach((div) => div.addEventListener('click', (e) => {
+            isDown = false;
+            div.style.backgroundColor = '';
+        }));
+
+        arr.forEach((div) => div.addEventListener('mouseover', (e) => {
+            if(!isDown) return; //stop function to run
+            div.style.backgroundColor = `${pen.value}`;
+        
+        }));
+    };
+
+    function penRainbow(){
         let isDown = false;
     
         arr.forEach((div) => div.addEventListener('mousedown', (e) => {
@@ -96,47 +120,20 @@ function E_A_S(){
         }));
     };
 
-    function c(){
-        let isDown = false;
-    
-        arr.forEach((div) => div.addEventListener('mousedown', (e) => {
-            isDown = true;
-            div.style.backgroundColor = `${pen.value}`;
 
-        }));
-    
-        arr.forEach((div) => div.addEventListener('mouseup', (e) => {
-            isDown = false;
-        }));
-    
-        arr.forEach((div) => div.addEventListener('click', (e) => {
-            isDown = false;
-            div.style.backgroundColor = '';
-        }));
-
-        arr.forEach((div) => div.addEventListener('mouseover', (e) => {
-            if(!isDown) return; //stop function to run
-            div.style.backgroundColor = `${pen.value}`;
-        
-        }));
-    };
-
-    //a();
-    c();
-
-    rainbow.addEventListener('click', () => {
-        b();
-    });
+    penColor();
 
     pen.addEventListener('click', () => {
-        c();
+        penColor();
     });
-   
+    rainbow.addEventListener('click', () => {
+        penRainbow();
+    });
 }    
 
 E_A_S();
 
-pixels.addEventListener('click', () => {
+pixelsNumber.addEventListener('click', () => {
     arr.forEach((divs) => {
         container.removeChild(divs);
     });
