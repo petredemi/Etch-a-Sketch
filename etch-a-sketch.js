@@ -5,6 +5,7 @@ let canvas;
 let arr;
 
 const btn = document.querySelector('#btn');
+const eraser = document.querySelector('#ruber');
 const pixelsNumber = document.querySelector('#pixels');
 const inputs = document.querySelectorAll('#grid, #back');
 const pen = document.querySelector('#pen');
@@ -82,11 +83,6 @@ function E_A_S(){
             isDown = false;
         }));
     
-        arr.forEach((div) => div.addEventListener('click', (e) => {
-            isDown = false;
-            div.style.backgroundColor = '';
-        }));
-
         arr.forEach((div) => div.addEventListener('mouseover', (e) => {
             if(!isDown) return; //stop function to run
             div.style.backgroundColor = `${pen.value}`;
@@ -107,11 +103,6 @@ function E_A_S(){
             isDown = false;
         }));
     
-        arr.forEach((div) => div.addEventListener('click', (e) => {
-            isDown = false;
-            div.style.backgroundColor = '';
-        }));
-
         arr.forEach((div) => div.addEventListener('mouseover', (e) => {
             i = Math.floor(Math.random() * 6);
             if(!isDown) return; //stop function to run 
@@ -119,6 +110,27 @@ function E_A_S(){
         
         }));
     };
+
+    function ruber(){
+        let isDown = false;
+    
+        arr.forEach((div) => div.addEventListener('mousedown', (e) => {
+            isDown = true;
+            div.style.backgroundColor = '';
+
+        }));
+    
+        arr.forEach((div) => div.addEventListener('mouseup', (e) => {
+            isDown = false;
+        }));
+    
+        arr.forEach((div) => div.addEventListener('mouseover', (e) => {
+            if(!isDown) return; //stop function to run
+            div.style.backgroundColor = '';
+        
+        }));
+    };
+
 
 
     penColor();
@@ -129,6 +141,10 @@ function E_A_S(){
     rainbow.addEventListener('click', () => {
         penRainbow();
     });
+    eraser.addEventListener('click', () => {
+        ruber();
+    });
+    
 }    
 
 E_A_S();
@@ -139,6 +155,11 @@ pixelsNumber.addEventListener('click', () => {
     });
     E_A_S();
 });
+
+arr.forEach((div) => div.addEventListener('click', (e) => {
+    isDown = false;
+    div.style.backgroundColor = '';
+}));
 
 btn.addEventListener('click', () => {
     clearCanvas();

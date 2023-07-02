@@ -50,8 +50,8 @@ label {
     border: 2px solid rgb(40, 17, 213);
     border-radius: 5px;
 }
-#btn {
-    font-size: 22px;
+#btn, #ruber{
+    font-size: 20px;
     color: #ff0707;
     font-weight: 600;
     text-shadow: 1px 1px 1px black;
