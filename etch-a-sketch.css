@@ -95,9 +95,6 @@ input {
     color: #ff0707;
     font-weight: 900;
 }
-.col{
-    background: var(--pen);
-}
 #rainbow {
     font-size: 16px;
     color: #330399;
