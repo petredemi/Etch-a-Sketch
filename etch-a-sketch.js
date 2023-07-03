@@ -43,25 +43,29 @@ function E_A_S(){
     arr = Array.from(document.querySelectorAll('.color'));
 
     function penColor(){
+
         let isDown = false;
     
         arr.forEach((div) => div.addEventListener('mousedown', (e) => {
             isDown = true;
             div.style.backgroundColor = `${pen.value}`;
-        },false));
+        }));
     
         arr.forEach((div) => div.addEventListener('mouseup', (e) => {
             isDown = false;
-        },false));
+        }));
     
         arr.forEach((div) => div.addEventListener('mouseover', (e) => {
             if(!isDown) return; //stop function to run
             div.style.backgroundColor = `${pen.value}`;
             
-        },false));
+        }));
+
     };
 
     function penRainbow(){
+
+
         let isDown = false;
     
         arr.forEach((div) => div.addEventListener('mousedown', (e) => {
@@ -125,10 +129,9 @@ pixelsNumber.addEventListener('click', () => {
     E_A_S();
 });
 
-arr.forEach((div) => div.addEventListener('click', (e) => {
-    div.style.backgroundColor = '';
-}));
-
+//arr.forEach((div) => div.addEventListener('click', (e) => {
+  //  div.style.backgroundColor = '';
+//}));
 
 btn.addEventListener('click', () => {
     clearCanvas();
