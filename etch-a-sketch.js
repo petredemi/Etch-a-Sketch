@@ -13,6 +13,17 @@ let container = document.querySelector('.canvas > .container');
 const rainbow = document.querySelector('#rainbow');
 const rbw = ['red', 'yellow', 'green', 'blue', 'pink', 'orange'];
 
+const s1 = document.querySelector('#s1');
+const s2 = document.querySelector('#s2');
+const s3 = document.querySelector('#s3');
+const s4 = document.querySelector('#s4');
+const s5 = document.querySelector('#s5');
+const s6 = document.querySelector('#s6');
+const s7 = document.querySelector('#s7');
+const s8 = document.querySelector('#s8');
+const s9 = document.querySelector('#s9');
+
+
 
 function clearCanvas(){
     arr.forEach((divs) => {
@@ -49,22 +60,24 @@ function E_A_S(){
         arr.forEach((div) => div.addEventListener('mousedown', (e) => {
             isDown = true;
             div.style.backgroundColor = `${pen.value}`;
+            s1.play();
         }));
     
         arr.forEach((div) => div.addEventListener('mouseup', (e) => {
             isDown = false;
+            s1.play();
         }));
     
         arr.forEach((div) => div.addEventListener('mouseover', (e) => {
             if(!isDown) return; //stop function to run
             div.style.backgroundColor = `${pen.value}`;
+            s8.play();
             
         }));
 
     };
 
     function penRainbow(){
-
 
         let isDown = false;
     
@@ -79,20 +92,17 @@ function E_A_S(){
         }));
     
         arr.forEach((div) => div.addEventListener('mouseover', (e) => {
-            i = Math.floor(Math.random() * 6);
+            let i = Math.floor(Math.random() * 6);
             if(!isDown) return; //stop function to run 
             div.style.backgroundColor = `${rbw[i]}`;
-        
         }));
     };
 
     function ruber(){
         let isDown = false;
-    
         arr.forEach((div) => div.addEventListener('mousedown', (e) => {
             isDown = true;
             div.style.backgroundColor = '';
-
         }));
     
         arr.forEach((div) => div.addEventListener('mouseup', (e) => {
@@ -102,23 +112,21 @@ function E_A_S(){
         arr.forEach((div) => div.addEventListener('mouseover', (e) => {
             if(!isDown) return; //stop function to run
             div.style.backgroundColor = '';
-        
         }));
     };
 
-    penColor();
+penColor();
 
-    pen.addEventListener('click', () => {
+pen.addEventListener('click', () => {
         penColor();
     });
-    rainbow.addEventListener('click', () => {
+rainbow.addEventListener('click', () => {
         penRainbow();
     });
 
-    erase.addEventListener('click', () => {
+erase.addEventListener('click', () => {
         ruber();
-    });
-    
+    }); 
 }    
 
 E_A_S();

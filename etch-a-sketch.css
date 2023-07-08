@@ -53,14 +53,15 @@ label {
 #btn, #ruber{
     font-size: 20px;
     color: #ff0707;
+    background: white;
     font-weight: 600;
-    text-shadow: 1px 1px 1px black;
+ /*   text-shadow: 1px 1px 1px black;*/
     padding: 5px;
     margin: 10px;
     max-width: 180px;
     border: 2px  solid #307ae8;
     border-radius: 10px;
-    box-shadow: 3px 3px 2px black;
+ /*   box-shadow: 3px 3px 2px black;*/
 }
 
 :root {
