@@ -8,6 +8,8 @@ const btn = document.querySelector('#btn');
 const erase = document.querySelector('#ruber');
 const pixelsNumber = document.querySelector('#pixels');
 const inputs = document.querySelectorAll('#grid, #back');
+const sound = document.querySelector('#sound');
+
 const pen = document.querySelector('#pen');
 let container = document.querySelector('.canvas > .container');
 const rainbow = document.querySelector('#rainbow');
@@ -23,7 +25,16 @@ const s7 = document.querySelector('#s7');
 const s8 = document.querySelector('#s8');
 const s9 = document.querySelector('#s9');
 
+let onoff = 1;
+function soundOnOff(){
+    if(sound.checked == true){
+        return onoff = 0;
+        } else { return onoff = 1;}
+}
 
+sound.addEventListener('click', () => {
+    soundOnOff();
+});
 
 function clearCanvas(){
     arr.forEach((divs) => {
@@ -60,19 +71,19 @@ function E_A_S(){
         arr.forEach((div) => div.addEventListener('mousedown', (e) => {
             isDown = true;
             div.style.backgroundColor = `${pen.value}`;
-            s1.play();
+            if( onoff == 1){
+                s1.play();
+            } else{ return;}      
         }));
     
         arr.forEach((div) => div.addEventListener('mouseup', (e) => {
             isDown = false;
-            s1.play();
         }));
     
         arr.forEach((div) => div.addEventListener('mouseover', (e) => {
             if(!isDown) return; //stop function to run
             div.style.backgroundColor = `${pen.value}`;
-            s8.play();
-            
+           if( onoff == 1){ s8.play();}
         }));
 
     };
@@ -130,6 +141,10 @@ erase.addEventListener('click', () => {
 }    
 
 E_A_S();
+
+
+
+
 pixelsNumber.addEventListener('click', () => {
     arr.forEach((divs) => {
         container.removeChild(divs);
