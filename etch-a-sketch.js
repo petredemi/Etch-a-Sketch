@@ -72,7 +72,7 @@ function E_A_S(){
             isDown = true;
             div.style.backgroundColor = `${pen.value}`;
             if( onoff == 1){
-                s1.play();
+                s7.play();
             } else{ return;}      
         }));
     
