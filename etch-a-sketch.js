@@ -26,6 +26,8 @@ const s8 = document.querySelector('#s8');
 const s9 = document.querySelector('#s9');
 
 let onoff = 1;
+let pencolors = 0;
+
 function soundOnOff(){
     if(sound.checked == true){
         return onoff = 0;
@@ -66,85 +68,54 @@ function E_A_S(){
 
     arr = Array.from(document.querySelectorAll('.color'));
 
-    function penColor(){
+    function penColor_Eraser(){
         let isDown = false;
     
         arr.forEach((div) => div.addEventListener('mousedown', (e) => {
             isDown = true;
-           div.setAttribute('style', `background: ${pen.value}; transition: o.9s;`);
+                if (pencolors == 0){
+                    div.setAttribute('style', `background: ${pen.value}; transition: o.9s;`);
+                } else if (pencolors == 1){ 
+                        div.style.backgroundColor = `${rbw[0]}`;
+                } else if( pencolors == 2){
+                    div.removeAttribute('style');
+                }
             if( onoff == 1){
                 s4.play();
             } else{ return;}      
         }));
-    
         arr.forEach((div) => div.addEventListener('mouseup', (e) => {
             isDown = false;
-   //         div.style.backgroundColor = 'pink'
         }));
     
         arr.forEach((div) => div.addEventListener('mouseover', (e) => {
             if(!isDown) return; //stop function to run
+         if (pencolors == 0){
             div.style.backgroundColor = `${pen.value}`;
-            div.style.transition = '0.9s'
-
-           if( onoff == 1){ s8.play();}
+            } else if (pencolors == 1){ 
+                i = Math.floor(Math.random() * 6);
+                div.style.backgroundColor = `${rbw[i]}`;
+                div.style.transition = '0.9s';
+            }else if (pencolors == 2){
+                div.removeAttribute('style');
+            }
+        if( onoff == 1){ s8.play();}
         }));
 
     };
 
-    function penRainbow(){
-
-        let isDown = false;
-    
-        arr.forEach((div) => div.addEventListener('mousedown', (e) => {
-            isDown = true;
-            div.style.backgroundColor = `${rbw[0]}`;
-
-        }));
-    
-        arr.forEach((div) => div.addEventListener('mouseup', (e) => {
-            isDown = false;
-        }));
-    
-        arr.forEach((div) => div.addEventListener('mouseover', (e) => {
-            if(!isDown) return; //stop function to run 
-            let i = Math.floor(Math.random() * 6);
-            div.style.backgroundColor = `${rbw[i]}`;
-        }));
-    };
-
-    function ruber(){
-        let isDown = false;
-        arr.forEach((div) => div.addEventListener('mousedown', (e) => {
-            isDown = true;
-            div.removeAttribute('style');
-        }));
-    
-        arr.forEach((div) => div.addEventListener('mouseup', (e) => {
-            isDown = false;
-        //    div.removeAttribute('style');
-
-        }));
-    
-        arr.forEach((div) => div.addEventListener('mouseover', (e) => {
-            if(!isDown) return; //stop function to run
-            div.removeAttribute('style');
-
-        }));
-    };
-
-penColor();
+penColor_Eraser();
 
 pen.addEventListener('click', () => {
-        penColor();
+        pencolors = 0;
     });
 rainbow.addEventListener('click', () => {
-        penRainbow();
+        pencolors = 1;
     });
 
 erase.addEventListener('mousedown', (e) => {
+    pencolors = 2;
     e.target.classList.add('playing');
-        ruber();
     });
 }   
 
