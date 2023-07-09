@@ -36,10 +36,6 @@ sound.addEventListener('click', () => {
     soundOnOff();
 });
 
-function removeTransition(e) {
-    if (e.propertyName !== 'transform') return;
-       e.target.classList.remove('playing');
-    } 
 
 function clearCanvas(){
     arr.forEach((divs) => {
@@ -111,8 +107,8 @@ function E_A_S(){
         }));
     
         arr.forEach((div) => div.addEventListener('mouseover', (e) => {
-            let i = Math.floor(Math.random() * 6);
             if(!isDown) return; //stop function to run 
+            let i = Math.floor(Math.random() * 6);
             div.style.backgroundColor = `${rbw[i]}`;
         }));
     };
@@ -126,7 +122,7 @@ function E_A_S(){
     
         arr.forEach((div) => div.addEventListener('mouseup', (e) => {
             isDown = false;
-            div.removeAttribute('style');
+        //    div.removeAttribute('style');
 
         }));
     
