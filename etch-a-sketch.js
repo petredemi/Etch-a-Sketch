@@ -99,7 +99,7 @@ function E_A_S(){
             }else if (pencolors == 2){
                 div.removeAttribute('style');
             }
-        if( onoff == 1){ s8.play();}
+        if( onoff == 1){ s4.play();}
         }));
 
     };
