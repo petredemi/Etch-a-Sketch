@@ -75,12 +75,7 @@ function E_A_S(){
     
         arr.forEach((div) => div.addEventListener('mousedown', (e) => {
             isDown = true;
-         //   div.style.backgroundColor = `${pen.value}`;
-         //   div.style.backgroundColor = 'pink';
-           // div.style.transition = '0.9s';
-           // div.style.transform = 'scale(1.4)';
-           div.setAttribute('style', `background: ${pen.value}; transition: o.9s;
-           transform: scale(1.4)` );
+           div.setAttribute('style', `background: ${pen.value}; transition: o.9s;`);
             if( onoff == 1){
                 s4.play();
             } else{ return;}      
@@ -88,8 +83,7 @@ function E_A_S(){
     
         arr.forEach((div) => div.addEventListener('mouseup', (e) => {
             isDown = false;
-            div.style.backgroundColor = 'pink'
-            div.style.transform = 'scale(1.4)';
+   //         div.style.backgroundColor = 'pink'
         }));
     
         arr.forEach((div) => div.addEventListener('mouseover', (e) => {
