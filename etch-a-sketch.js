@@ -156,9 +156,6 @@ erase.addEventListener('mousedown', (e) => {
     e.target.classList.add('playing');
         ruber();
     });
-erase.addEventListener('mouseup', (e) => {
-        e.target.classList.remove('playing');
-    }); 
 }   
 
 E_A_S();
@@ -175,9 +172,12 @@ btn.addEventListener('mousedown', (e) => {
     clearCanvas();
 });
 
-
 btn.addEventListener('mouseup', (e) => {
     e.target.classList.remove('playing');
 });
+erase.addEventListener('mouseup', (e) => {
+    e.target.classList.remove('playing');
+}); 
+
 
     
