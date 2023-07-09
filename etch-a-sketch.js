@@ -81,6 +81,7 @@ function E_A_S(){
                     div.removeAttribute('style');
                 }
             if( onoff == 1){
+                s4.currentTime = 0;
                 s4.play();
             } else{ return;}      
         }));
@@ -99,7 +100,10 @@ function E_A_S(){
             }else if (pencolors == 2){
                 div.removeAttribute('style');
             }
-        if( onoff == 1){ s4.play();}
+        if( onoff == 1){ 
+            s8.currentTime = 0;
+            s8.play();
+        }
         }));
 
     };
