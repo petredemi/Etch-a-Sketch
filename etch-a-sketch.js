@@ -101,9 +101,9 @@ function E_A_S(){
                 div.removeAttribute('style');
             }
         if( onoff == 1){ 
-            s8.currentTime = 0;
-            s8.play();
-        }
+            s4.currentTime = 0;
+            s4.play();
+        } else {return;}
         }));
 
     };
