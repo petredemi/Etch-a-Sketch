@@ -12,9 +12,9 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
     background-color: rgb(255, 253, 202);
 }
-
 h1 {
     color: #ff0707;
     text-shadow: 2px 2px 2px black;
@@ -25,8 +25,8 @@ h1 {
     border: 2px solid black;
     margin: 5px;
     padding: 2px;
-    width: 72vh;
-    height: 72vh;
+    width: fit-content;
+    height: fit-content;
 }
 
 .control {
