@@ -36,9 +36,15 @@ sound.addEventListener('click', () => {
     soundOnOff();
 });
 
+function removeTransition(e) {
+    if (e.propertyName !== 'transform') return;
+       e.target.classList.remove('playing');
+    } 
+
 function clearCanvas(){
     arr.forEach((divs) => {
     divs.style.backgroundColor = '';
+    divs.style = '';
     });
 } 
 
@@ -65,24 +71,32 @@ function E_A_S(){
     arr = Array.from(document.querySelectorAll('.color'));
 
     function penColor(){
-
         let isDown = false;
     
         arr.forEach((div) => div.addEventListener('mousedown', (e) => {
             isDown = true;
-            div.style.backgroundColor = `${pen.value}`;
+         //   div.style.backgroundColor = `${pen.value}`;
+         //   div.style.backgroundColor = 'pink';
+           // div.style.transition = '0.9s';
+           // div.style.transform = 'scale(1.4)';
+           div.setAttribute('style', `background: ${pen.value}; transition: o.9s;
+           transform: scale(1.4)` );
             if( onoff == 1){
-                s7.play();
+                s4.play();
             } else{ return;}      
         }));
     
         arr.forEach((div) => div.addEventListener('mouseup', (e) => {
             isDown = false;
+            div.style.backgroundColor = 'pink'
+            div.style.transform = 'scale(1.4)';
         }));
     
         arr.forEach((div) => div.addEventListener('mouseover', (e) => {
             if(!isDown) return; //stop function to run
             div.style.backgroundColor = `${pen.value}`;
+            div.style.transition = '0.9s'
+
            if( onoff == 1){ s8.play();}
         }));
 
@@ -113,16 +127,19 @@ function E_A_S(){
         let isDown = false;
         arr.forEach((div) => div.addEventListener('mousedown', (e) => {
             isDown = true;
-            div.style.backgroundColor = '';
+            div.removeAttribute('style');
         }));
     
         arr.forEach((div) => div.addEventListener('mouseup', (e) => {
             isDown = false;
+            div.removeAttribute('style');
+
         }));
     
         arr.forEach((div) => div.addEventListener('mouseover', (e) => {
             if(!isDown) return; //stop function to run
-            div.style.backgroundColor = '';
+            div.removeAttribute('style');
+
         }));
     };
 
@@ -135,15 +152,16 @@ rainbow.addEventListener('click', () => {
         penRainbow();
     });
 
-erase.addEventListener('click', () => {
+erase.addEventListener('mousedown', (e) => {
+    e.target.classList.add('playing');
         ruber();
+    });
+erase.addEventListener('mouseup', (e) => {
+        e.target.classList.remove('playing');
     }); 
-}    
+}   
 
 E_A_S();
-
-
-
 
 pixelsNumber.addEventListener('click', () => {
     arr.forEach((divs) => {
@@ -152,11 +170,14 @@ pixelsNumber.addEventListener('click', () => {
     E_A_S();
 });
 
-//arr.forEach((div) => div.addEventListener('click', (e) => {
-  //  div.style.backgroundColor = '';
-//}));
-
-btn.addEventListener('click', () => {
+btn.addEventListener('mousedown', (e) => {
+    e.target.classList.add('playing');
     clearCanvas();
 });
 
+
+btn.addEventListener('mouseup', (e) => {
+    e.target.classList.remove('playing');
+});
+
+    
