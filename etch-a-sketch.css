@@ -9,10 +9,13 @@ body {
 }
 .mycanvas {
     border: 3px solid rgb(11, 10, 10);
+    border-style: outset;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
+    width: fit-content;
+    height: fit-content;
     background-color: rgb(255, 253, 202);
 }
 h1 {

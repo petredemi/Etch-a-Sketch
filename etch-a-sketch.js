@@ -74,7 +74,8 @@ function E_A_S(){
         arr.forEach((div) => div.addEventListener('mousedown', (e) => {
             isDown = true;
                 if (pencolors == 0){
-                    div.setAttribute('style', `background: ${pen.value}; transition: o.9s;`);
+                    div.setAttribute('style', `background: ${pen.value}; transition: 0.7s;
+                    border: 2px solid white; border-style: inset`);
                 } else if (pencolors == 1){ 
                         div.style.backgroundColor = `${rbw[0]}`;
                 } else if( pencolors == 2){
@@ -89,10 +90,12 @@ function E_A_S(){
             isDown = false;
         }));
     
-        arr.forEach((div) => div.addEventListener('mouseover', (e) => {
+        arr.forEach((div) => div.addEventListener('mouseleave', (e) => {
             if(!isDown) return; //stop function to run
          if (pencolors == 0){
-            div.style.backgroundColor = `${pen.value}`;
+           // div.style.backgroundColor = `${pen.value} `;
+                div.setAttribute('style', `background: ${pen.value}; transition: 0.7s;
+                border: 2px solid white; border-style: inset`);
             } else if (pencolors == 1){ 
                 i = Math.floor(Math.random() * 6);
                 div.style.backgroundColor = `${rbw[i]}`;
