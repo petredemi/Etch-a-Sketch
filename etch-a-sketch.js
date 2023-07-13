@@ -9,6 +9,9 @@ const erase = document.querySelector('#ruber');
 const pixelsNumber = document.querySelector('#pixels');
 const inputs = document.querySelectorAll('#grid, #back');
 const sound = document.querySelector('#sound');
+const picture = document.querySelector('#img');
+const canvasBackground = document.querySelector('.mycanvas > .canvas');
+const containerBackground = document.querySelector('#back')
 
 const pen = document.querySelector('#pen');
 let container = document.querySelector('.canvas > .container');
@@ -25,26 +28,46 @@ const s7 = document.querySelector('#s7');
 const s8 = document.querySelector('#s8');
 const s9 = document.querySelector('#s9');
 
-let onoff = 1;
+
+let onoffSound = 1;
+let imgOnOff = 0;
 let pencolors = 0;
 
 function soundOnOff(){
     if(sound.checked == true){
-        return onoff = 0;
-        } else { return onoff = 1;}
+        return onoffSound = 0;
+        } else { return onoffSound = 1;}
 }
 
 sound.addEventListener('click', () => {
     soundOnOff();
 });
 
-
 function clearCanvas(){
     arr.forEach((divs) => {
     divs.style.backgroundColor = '';
     divs.style = '';
+  //  container.style.backgroundColor = 'var(--back)';
+
     });
 } 
+
+function canvasMaker(){
+    for( let i = 1; i <= canvas ** 2; i++){
+        container.setAttribute('style', `diplay: grid; grid-template-columns:repeat(${canvas}, 1fr)`);    
+        divs = document.createElement('div');
+        divs.classList.add('color');
+        container.appendChild (divs);
+        
+        if(imgOnOff == 0){
+        container.style.backgroundColor = 'var(--back)';
+
+        }else if (imgOnOff == 1){ 
+            divs.setAttribute('style', `background: ${pen.value}; border: 2px solid white; border-style: outset`);
+
+        }
+    }
+}
 
 function E_A_S(){
     
@@ -56,62 +79,81 @@ function E_A_S(){
     function gridBorderAndBackground(){
         inputs.forEach(input => input.addEventListener('change', handelUpdate));
         inputs.forEach(input => input.addEventListener('click', handelUpdate));
-    }
-    gridBorderAndBackground();
+  //      container.style.backgroundColor = 'var(--back)';
 
-    for( let i = 1; i <= canvas ** 2; i++){
-        container.setAttribute('style', `diplay: grid; grid-template-columns:repeat(${canvas}, 1fr)`);    
-        divs = document.createElement('div');
-        divs.classList.add('color');
-        container.appendChild (divs);
     }
+
+
+    gridBorderAndBackground();
+    canvasMaker();
 
     arr = Array.from(document.querySelectorAll('.color'));
-
     function penColor_Eraser(){
         let isDown = false;
-    
+        let x = 0;
         arr.forEach((div) => div.addEventListener('mousedown', (e) => {
-            isDown = true;
+            isDown = true; 
+             x = x + 1;
+            if ( x == 6){ x = 0};       
                 if (pencolors == 0){
-                    div.setAttribute('style', `background: ${pen.value}; transition: 0.7s;
+                    //div.style.backgroundColor = `${pen.value} `;
+                   div.setAttribute('style', `background: ${pen.value};
                     border: 2px solid white; border-style: inset`);
+              
                 } else if (pencolors == 1){ 
-                        div.style.backgroundColor = `${rbw[0]}`;
+                        div.style.backgroundColor = `${rbw[x]}`;
+
                 } else if( pencolors == 2){
                     div.removeAttribute('style');
                 }
-            if( onoff == 1){
+            if( onoffSound == 1){
                 s4.currentTime = 0;
                 s4.play();
-            } else{ return;}      
+            } else{ return;} 
+            console.log(x);
         }));
         arr.forEach((div) => div.addEventListener('mouseup', (e) => {
             isDown = false;
         }));
     
-        arr.forEach((div) => div.addEventListener('mouseleave', (e) => {
+        arr.forEach((div) => div.addEventListener('mouseenter', (e) => {
             if(!isDown) return; //stop function to run
+            x = x + 1;
+            if ( x == 6){ x = 0};       
+
          if (pencolors == 0){
-           // div.style.backgroundColor = `${pen.value} `;
+            //div.style.backgroundColor = `${pen.value} `;
                 div.setAttribute('style', `background: ${pen.value}; transition: 0.7s;
                 border: 2px solid white; border-style: inset`);
-            } else if (pencolors == 1){ 
-                i = Math.floor(Math.random() * 6);
-                div.style.backgroundColor = `${rbw[i]}`;
+            //div.removeAttribute('style');
+
+            } else if (pencolors == 1){
+              //  i = Math.floor(Math.random() * 6);
+                div.style.backgroundColor = `${rbw[x]}`;
                 div.style.transition = '0.9s';
             }else if (pencolors == 2){
                 div.removeAttribute('style');
             }
-        if( onoff == 1){ 
+        if( onoffSound == 1){ 
             s4.currentTime = 0;
             s4.play();
         } else {return;}
         }));
-
     };
 
 penColor_Eraser();
+
+picture.addEventListener('click', () => {
+    imgOnOff = 1;
+    let p = Math.floor(Math.random() * 5) + 1;
+    canvasBackground.setAttribute('style', `background-image: url("./images/IMG${p}.JPG")`);
+   // container.style.backgroundColor = '';
+    arr.forEach((divs) => {
+        container.removeChild(divs);
+    });
+    E_A_S();
+});
+
 
 pen.addEventListener('click', () => {
         pencolors = 0;
@@ -119,21 +161,32 @@ pen.addEventListener('click', () => {
 rainbow.addEventListener('click', () => {
         pencolors = 1;
     });
-
+  
 erase.addEventListener('mousedown', (e) => {
-    pencolors = 2;
-    e.target.classList.add('playing');
+        pencolors = 2;
+        e.target.classList.add('playing');
     });
+containerBackground.addEventListener('click', () => {
+    arr.forEach((divs) => {
+        divs.removeAttribute('style');
+    });
+    container.style.backgroundColor = 'var(--back)';
+});
+
 }   
 
 E_A_S();
 
+//let x = -1;
 pixelsNumber.addEventListener('click', () => {
+  //  x = x + 1;
     arr.forEach((divs) => {
         container.removeChild(divs);
     });
     E_A_S();
+  // console.log(x);
 });
+
 
 btn.addEventListener('mousedown', (e) => {
     e.target.classList.add('playing');
@@ -148,4 +201,3 @@ erase.addEventListener('mouseup', (e) => {
 }); 
 
 
-    

@@ -30,6 +30,7 @@ h1 {
     padding: 2px;
     width: fit-content;
     height: fit-content;
+   
 }
 
 .control {
@@ -55,7 +56,7 @@ label {
     border: 2px solid rgb(7, 7, 168);
     border-radius: 5px;
 }
-#btn, #ruber{
+#btn, #ruber, #img{
     font-size: 20px;
     color: #ff0707;
     font-weight: 600;
@@ -84,8 +85,8 @@ label {
     padding: 3px;
     width: 71vh;
     height: 71vh;
-    background-color: var(--back);
-
+/*background-color: var(--back);
+*/
 }
 .container div {
     display: flex;
