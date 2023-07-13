@@ -47,8 +47,6 @@ function clearCanvas(){
     arr.forEach((divs) => {
     divs.style.backgroundColor = '';
     divs.style = '';
-  //  container.style.backgroundColor = 'var(--back)';
-
     });
 } 
 
@@ -79,10 +77,7 @@ function E_A_S(){
     function gridBorderAndBackground(){
         inputs.forEach(input => input.addEventListener('change', handelUpdate));
         inputs.forEach(input => input.addEventListener('click', handelUpdate));
-  //      container.style.backgroundColor = 'var(--back)';
-
     }
-
 
     gridBorderAndBackground();
     canvasMaker();
@@ -96,7 +91,6 @@ function E_A_S(){
              x = x + 1;
             if ( x == 6){ x = 0};       
                 if (pencolors == 0){
-                    //div.style.backgroundColor = `${pen.value} `;
                    div.setAttribute('style', `background: ${pen.value};
                     border: 2px solid white; border-style: inset`);
               
@@ -122,7 +116,6 @@ function E_A_S(){
             if ( x == 6){ x = 0};       
 
          if (pencolors == 0){
-            //div.style.backgroundColor = `${pen.value} `;
                 div.setAttribute('style', `background: ${pen.value}; transition: 0.7s;
                 border: 2px solid white; border-style: inset`);
             //div.removeAttribute('style');
@@ -134,10 +127,10 @@ function E_A_S(){
             }else if (pencolors == 2){
                 div.removeAttribute('style');
             }
-        if( onoffSound == 1){ 
+      /*  if( onoffSound == 1){ 
             s4.currentTime = 0;
             s4.play();
-        } else {return;}
+        } else {return;}*/
         }));
     };
 
@@ -147,7 +140,6 @@ picture.addEventListener('click', () => {
     imgOnOff = 1;
     let p = Math.floor(Math.random() * 5) + 1;
     canvasBackground.setAttribute('style', `background-image: url("./images/IMG${p}.JPG")`);
-   // container.style.backgroundColor = '';
     arr.forEach((divs) => {
         container.removeChild(divs);
     });
@@ -177,14 +169,11 @@ containerBackground.addEventListener('click', () => {
 
 E_A_S();
 
-//let x = -1;
 pixelsNumber.addEventListener('click', () => {
-  //  x = x + 1;
     arr.forEach((divs) => {
         container.removeChild(divs);
     });
     E_A_S();
-  // console.log(x);
 });
 
 
