@@ -12,6 +12,8 @@ const sound = document.querySelector('#sound');
 const picture = document.querySelector('#img');
 const canvasBackground = document.querySelector('.mycanvas > .canvas');
 const containerBackground = document.querySelector('#back')
+const hue = document.querySelector('#hue');
+console.log(hue);
 
 const pen = document.querySelector('#pen');
 let container = document.querySelector('.canvas > .container');
@@ -32,16 +34,29 @@ const s9 = document.querySelector('#s9');
 let onoffSound = 1;
 let imgOnOff = 0;
 let pencolors = 0;
+let hueOnOff = 1;
 
 function soundOnOff(){
     if(sound.checked == true){
         return onoffSound = 0;
         } else { return onoffSound = 1;}
 }
+function hueFunction(){
+    if(hue.checked == true){
+        return hueOnOff = 0;
+        } else { return hueOnOff = 1;}
+}
+
 
 sound.addEventListener('click', () => {
     soundOnOff();
 });
+
+hue.addEventListener('click', (e) => {
+    hueFunction();
+    console.log(e);
+});
+
 
 function clearCanvas(){
     arr.forEach((divs) => {
@@ -86,16 +101,25 @@ function E_A_S(){
     function penColor_Eraser(){
         let isDown = false;
         let x = 0;
+        let o = 20;
         arr.forEach((div) => div.addEventListener('mousedown', (e) => {
             isDown = true; 
              x = x + 1;
-            if ( x == 6){ x = 0};       
+            
+            if (hueOnOff == 1) {
+                o = div.style.opacity * 100 + 20;
+                if ( o == 100){ o = 100}
+            } else { o = 100};
+
+            if ( x == 6){ x = 0};
                 if (pencolors == 0){
                    div.setAttribute('style', `background: ${pen.value};
                     border: 2px solid white; border-style: inset`);
+                    div.style.opacity = (`${o}%`);
               
                 } else if (pencolors == 1){ 
                         div.style.backgroundColor = `${rbw[x]}`;
+                        div.style.opacity = (`100%`);
 
                 } else if( pencolors == 2){
                     div.removeAttribute('style');
@@ -104,7 +128,6 @@ function E_A_S(){
                 s4.currentTime = 0;
                 s4.play();
             } else{ return;} 
-            console.log(x);
         }));
         arr.forEach((div) => div.addEventListener('mouseup', (e) => {
             isDown = false;
@@ -113,16 +136,23 @@ function E_A_S(){
         arr.forEach((div) => div.addEventListener('mouseenter', (e) => {
             if(!isDown) return; //stop function to run
             x = x + 1;
-            if ( x == 6){ x = 0};       
+            if ( x == 6){ x = 0}; 
+
+            if (hueOnOff == 1) {
+                o = div.style.opacity * 100 + 20;
+                if ( o == 100){ o = 100}
+            } else { o = 100};
+
 
          if (pencolors == 0){
                 div.setAttribute('style', `background: ${pen.value}; transition: 0.7s;
                 border: 2px solid white; border-style: inset`);
-            //div.removeAttribute('style');
+                div.style.opacity = (`${o}%`);
 
             } else if (pencolors == 1){
               //  i = Math.floor(Math.random() * 6);
                 div.style.backgroundColor = `${rbw[x]}`;
+                div.style.opacity = (`100`);
                 div.style.transition = '0.9s';
             }else if (pencolors == 2){
                 div.removeAttribute('style');
@@ -132,13 +162,13 @@ function E_A_S(){
             s4.play();
         } else {return;}*/
         }));
-    };
+    }
 
 penColor_Eraser();
 
-picture.addEventListener('click', () => {
+picture.addEventListener('click', (e) => {
     imgOnOff = 1;
-    let p = Math.floor(Math.random() * 5) + 1;
+    let p = Math.floor(Math.random() * 11) + 1;
     canvasBackground.setAttribute('style', `background-image: url("./images/IMG${p}.JPG")`);
     arr.forEach((divs) => {
         container.removeChild(divs);
@@ -146,14 +176,13 @@ picture.addEventListener('click', () => {
     E_A_S();
 });
 
-
 pen.addEventListener('click', () => {
         pencolors = 0;
     });
 rainbow.addEventListener('click', () => {
         pencolors = 1;
     });
-  
+
 erase.addEventListener('mousedown', (e) => {
         pencolors = 2;
         e.target.classList.add('playing');
@@ -185,6 +214,7 @@ btn.addEventListener('mousedown', (e) => {
 btn.addEventListener('mouseup', (e) => {
     e.target.classList.remove('playing');
 });
+
 erase.addEventListener('mouseup', (e) => {
     e.target.classList.remove('playing');
 }); 

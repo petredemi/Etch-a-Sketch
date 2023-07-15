@@ -22,6 +22,12 @@
                     <span class = 'slider round'></span>
                 </label>
             </div>
+            <div> hue effect
+                <label id = 'switch' for = 'hue'>
+                    <input type = 'checkbox' id = 'hue'>
+                    <span class = 'slider round'></span>
+                </label>
+            </div>
             <label for = 'pixels'>Pixel Number:    
                 <input  type = 'number' id = 'pixels' name = 'pixels' min= '4' max= '64' value = '10'>
             </label>
@@ -29,18 +35,19 @@
             <label for = 'grid'>Grid Border: 
                 <input  type = 'number' id = 'grid' name= 'grid' min= '0.0' max= '3' value = '0.4' step="0.4" data-sizing = 'px' >
             </label>
-
-            <label for = 'pen'>Pen Color:
+            <div id = 'pentype'>
+                <label for = 'pen'>Pen Color:
                     <input type = 'color' id = 'pen'  name = 'pen' value = '#07ffc1' >
-                    <button id = 'rainbow'>Rainbow</button>
-            </label>
+                </label>
+                <button id = 'rainbow'>Rainbow</button>
+
+            </div>
 
             <label for = 'back'>Background:
                 <input  type = 'color' id = 'back' name = 'back'  value = '#10c4ec' >
             </label>
-
-            <button id = 'img'>get a picture</button>
-            <button id = 'ruber'>remove pixels</button>
+            <button id = 'img'> Discover a Picture</button>
+            <button id = 'ruber'>Remove tiles</button>
             <button id = 'btn'>Clear Canvas</button>
 
         </div>
@@ -54,16 +61,9 @@
         <audio id = 's8' src="sounds/tink.wav"></audio>
         <audio id = 's9' src="sounds/tom.wav"></audio>
 
-   <!-- <img id = 'img1' src="./images/IMG1.jpg" height='500' alt="creative pictures">
-    <img id = 'img1' src="Etch-a-Sketch/images/IMG2.jpg" height='500' alt="creative pictures">
-    <img id = 'img3' src="Etch-a-Sketch/images/IMG3.jpg" height='500' alt="creative pictures">
-    <img id = 'img4' src="Etch-a-Sketch/images/IMG4.jpg" height='500' alt="creative pictures">
-    <img id = 'img5' src="Etch-a-Sketch/images/IMG5.jpg" height='500' alt="creative pictures">
-    
-   <button><a href="recipes/cheesepie.html"> Cheese Pie </a></button>
-   
-    -->
-
+    </div>
+    <div class="footer">
+        <p>Copyright @ PetreD - The Odin Project 2023</p>
     </div>
     
 </body>
