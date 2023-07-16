@@ -168,7 +168,7 @@ penColor_Eraser();
 
 picture.addEventListener('click', (e) => {
     imgOnOff = 1;
-    let p = Math.floor(Math.random() * 11) + 1;
+    let p = Math.floor(Math.random() * 15) + 1;
     canvasBackground.setAttribute('style', `background-image: url("./images/IMG${p}.jpg")`);
     arr.forEach((divs) => {
         container.removeChild(divs);
