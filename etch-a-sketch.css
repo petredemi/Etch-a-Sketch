@@ -6,6 +6,7 @@ body {
     justify-content: center;
     flex-direction: column;
     background-color: rgb(189, 248, 209);
+    width: 100vh;    
 }
 .mycanvas {
     border: 3px solid rgb(11, 10, 10);
@@ -14,19 +15,21 @@ body {
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    width: fit-content;
-    height: fit-content;
+    width: auto;
+    height: auto;
     background-color: rgb(255, 253, 202);
 }
 h1 {
     color: #ff0707;
     text-shadow: 2px 2px 2px black;
     font-size: 45px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+    margin-top: 30px;
 }
 .canvas {
     border: 2px solid black;
     margin: 5px;
+    margin-top: 30px;
     padding: 2px;
     width: fit-content;
     height: fit-content;
@@ -35,25 +38,14 @@ h1 {
 
 .control {
     margin: 15px;
-    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
     border: 3px solid #ff0800;
     background: #bff7ae;
     border-radius: 10px;
     box-shadow: 5px 7px 5px black;
-
     display: grid;
     grid-template-columns: 2 1fr;
-    display: flex;
-    justify-content: center;
-    align-items: end;
-    flex-direction: column;
-    flex-shrink: inherit;
-  /*  display: grid;
-    padding: 3px;
-    width: 30vh;
-    height: 60vh;
-
-  }*/
 }
 label, #img {
     font-size: 16px;
@@ -121,6 +113,8 @@ label, #img {
     justify-content: center;
     align-items: center;
     border: var(--grid) solid rgb(144, 4, 4);
+    width: 100%;
+    height: 100%;
 }
 
 input {
@@ -194,7 +188,7 @@ input {
   .slider.round:before {
     border-radius: 50%;
   }
-  div {
+ div {
     font-size: 18px;
     text-align: end;
   }
