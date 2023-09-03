@@ -94,7 +94,7 @@ function E_A_S(){
         inputs.forEach(input => input.addEventListener('touchstart', handelUpdate));
     }
 
-  // gridBorderAndBackground();
+    gridBorderAndBackground();
     canvasMaker();
 
     arr = Array.from(document.querySelectorAll('.color'));
