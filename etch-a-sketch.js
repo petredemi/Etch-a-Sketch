@@ -91,7 +91,7 @@ function E_A_S(){
     }
     function gridBorderAndBackground(){
         inputs.forEach(input => input.addEventListener('change', handelUpdate));
-        inputs.forEach(input => input.addEventListener('touchstart', handelUpdate));
+        inputs.forEach(input => input.addEventListener('touchcancel', handelUpdate));
     }
 
     gridBorderAndBackground();
