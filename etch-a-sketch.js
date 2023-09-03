@@ -8,7 +8,7 @@ const btn = document.querySelector('#btn');
 const erase = document.querySelector('#ruber');
 const pixelsNumber = document.querySelector('#pixels');
 const inputs = document.querySelectorAll('#grid, #back');
-const sound = document.querySelector('#sound');
+//const sound = document.querySelector('#sound');
 const picture = document.querySelector('#img');
 const canvasBackground = document.querySelector('.mycanvas > .canvas');
 const containerBackground = document.querySelector('#back')
@@ -31,16 +31,16 @@ const s8 = document.querySelector('#s8');
 const s9 = document.querySelector('#s9');
 
 
-let onoffSound = 1;
+//let onoffSound = 1;
 let imgOnOff = 0;
 let pencolors = 0;
 let hueOnOff = 1;
 
-function soundOnOff(){
+/*function soundOnOff(){
     if(sound.checked == true){
         return onoffSound = 0;
         } else { return onoffSound = 1;}
-}
+}*/
 function hueFunction(){
     if(hue.checked == true){
         return hueOnOff = 0;
@@ -48,9 +48,9 @@ function hueFunction(){
 }
 
 
-sound.addEventListener('click', () => {
+/*sound.addEventListener('click', () => {
     soundOnOff();
-});
+});*/
 
 hue.addEventListener('click', (e) => {
     hueFunction();
@@ -102,7 +102,7 @@ function E_A_S(){
         let isDown = false;
         let x = 0;
         let o = 20;
-        arr.forEach((div) => div.addEventListener('mousedown', (e) => {
+        arr.forEach((div) => div.addEventListener('touchstart', (e) => {
             isDown = true; 
              x = x + 1;
             
@@ -124,16 +124,16 @@ function E_A_S(){
                 } else if( pencolors == 2){
                     div.removeAttribute('style');
                 }
-            if( onoffSound == 1){
-                s4.currentTime = 0;
-                s4.play();
-            } else{ return;} 
+         /*   if( onoffSound == 1){
+                s3.currentTime = 0;
+                s3.play();
+            } else{ return;} */
         }));
-        arr.forEach((div) => div.addEventListener('mouseup', (e) => {
+        arr.forEach((div) => div.addEventListener('touchend', (e) => {
             isDown = false;
         }));
     
-        arr.forEach((div) => div.addEventListener('mouseenter', (e) => {
+        arr.forEach((div) => div.addEventListener('touchmove', (e) => {
             if(!isDown) return; //stop function to run
             x = x + 1;
             if ( x == 6){ x = 0}; 
@@ -166,7 +166,7 @@ function E_A_S(){
 
 penColor_Eraser();
 
-picture.addEventListener('click', (e) => {
+picture.addEventListener('touchstart', (e) => {
     imgOnOff = 1;
     let p = Math.floor(Math.random() * 15) + 1;
     canvasBackground.setAttribute('style', `background-image: url("./images/IMG${p}.jpg")`);
@@ -176,18 +176,18 @@ picture.addEventListener('click', (e) => {
     E_A_S();
 });
 
-pen.addEventListener('click', () => {
+pen.addEventListener('touchstart', () => {
         pencolors = 0;
     });
-rainbow.addEventListener('click', () => {
+rainbow.addEventListener('touchstart', () => {
         pencolors = 1;
     });
 
-erase.addEventListener('mousedown', (e) => {
+erase.addEventListener('touchstart', (e) => {
         pencolors = 2;
         e.target.classList.add('playing');
     });
-containerBackground.addEventListener('click', () => {
+containerBackground.addEventListener('touchstart', () => {
     arr.forEach((divs) => {
         divs.removeAttribute('style');
     });
@@ -198,7 +198,7 @@ containerBackground.addEventListener('click', () => {
 
 E_A_S();
 
-pixelsNumber.addEventListener('click', () => {
+pixelsNumber.addEventListener('touchstart', () => {
     arr.forEach((divs) => {
         container.removeChild(divs);
     });
@@ -206,16 +206,16 @@ pixelsNumber.addEventListener('click', () => {
 });
 
 
-btn.addEventListener('mousedown', (e) => {
+btn.addEventListener('touchstart', (e) => {
     e.target.classList.add('playing');
     clearCanvas();
 });
 
-btn.addEventListener('mouseup', (e) => {
+btn.addEventListener('touchend', (e) => {
     e.target.classList.remove('playing');
 });
 
-erase.addEventListener('mouseup', (e) => {
+erase.addEventListener('touchcancel', (e) => {
     e.target.classList.remove('playing');
 }); 
 
