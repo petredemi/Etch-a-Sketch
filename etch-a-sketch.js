@@ -129,7 +129,7 @@ function E_A_S(){
                 s3.play();
             } else{ return;} */
         }));
-        arr.forEach((div) => div.addEventListener('touchcancel', (e) => {
+        arr.forEach((div) => div.addEventListener('touchend', (e) => {
             isDown = false;
         }));
     
@@ -166,7 +166,7 @@ function E_A_S(){
 
 penColor_Eraser();
 
-picture.addEventListener('touchstart', (e) => {
+picture.addEventListener('touchend', (e) => {
     imgOnOff = 1;
     let p = Math.floor(Math.random() * 15) + 1;
     canvasBackground.setAttribute('style', `background-image: url("./images/IMG${p}.jpg")`);
@@ -176,7 +176,7 @@ picture.addEventListener('touchstart', (e) => {
     E_A_S();
 });
 
-pen.addEventListener('touchstart', () => {
+pen.addEventListener('touchend', () => {
         pencolors = 0;
     });
 rainbow.addEventListener('touchstart', () => {
@@ -198,7 +198,7 @@ containerBackground.addEventListener('touchstart', () => {
 
 E_A_S();
 
-pixelsNumber.addEventListener('touchstart', () => {
+pixelsNumber.addEventListener('touchend', () => {
     arr.forEach((divs) => {
         container.removeChild(divs);
     });
