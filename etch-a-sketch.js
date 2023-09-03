@@ -91,10 +91,10 @@ function E_A_S(){
     }
     function gridBorderAndBackground(){
         inputs.forEach(input => input.addEventListener('change', handelUpdate));
-        inputs.forEach(input => input.addEventListener('click', handelUpdate));
+        inputs.forEach(input => input.addEventListener('touchstart', handelUpdate));
     }
 
-    gridBorderAndBackground();
+  // gridBorderAndBackground();
     canvasMaker();
 
     arr = Array.from(document.querySelectorAll('.color'));
@@ -129,7 +129,7 @@ function E_A_S(){
                 s3.play();
             } else{ return;} */
         }));
-        arr.forEach((div) => div.addEventListener('touchend', (e) => {
+        arr.forEach((div) => div.addEventListener('touchcancel', (e) => {
             isDown = false;
         }));
     
