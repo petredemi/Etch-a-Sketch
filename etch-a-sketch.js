@@ -133,7 +133,7 @@ function E_A_S(){
             isDown = false;
         }));
     
-        arr.forEach((div) => div.addEventListener('touchmove', (e) => {
+        arr.forEach((div) => div.addEventListener('touchstart', (e) => {
             if(!isDown) return; //stop function to run
             x = x + 1;
             if ( x == 6){ x = 0}; 
@@ -215,7 +215,7 @@ btn.addEventListener('touchend', (e) => {
     e.target.classList.remove('playing');
 });
 
-erase.addEventListener('touchcancel', (e) => {
+erase.addEventListener('touchend', (e) => {
     e.target.classList.remove('playing');
 }); 
 
