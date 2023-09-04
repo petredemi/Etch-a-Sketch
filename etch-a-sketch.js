@@ -91,7 +91,7 @@ function E_A_S(){
     }
     function gridBorderAndBackground(){
         inputs.forEach(input => input.addEventListener('change', handelUpdate));
-        inputs.forEach(input => input.addEventListener('touchcancel', handelUpdate));
+        inputs.forEach(input => input.addEventListener('click', handelUpdate));
     }
 
     gridBorderAndBackground();
@@ -102,7 +102,7 @@ function E_A_S(){
         let isDown = false;
         let x = 0;
         let o = 20;
-        arr.forEach((div) => div.addEventListener('touchstart', (e) => {
+        arr.forEach((div) => div.addEventListener('mousedown', (e) => {
             isDown = true; 
              x = x + 1;
             
@@ -129,11 +129,11 @@ function E_A_S(){
                 s3.play();
             } else{ return;} */
         }));
-        arr.forEach((div) => div.addEventListener('touchend', (e) => {
+        arr.forEach((div) => div.addEventListener('mouseup', (e) => {
             isDown = false;
         }));
     
-        arr.forEach((div) => div.addEventListener('touchstart', (e) => {
+        arr.forEach((div) => div.addEventListener('mouseenter', (e) => {
             if(!isDown) return; //stop function to run
             x = x + 1;
             if ( x == 6){ x = 0}; 
@@ -166,7 +166,7 @@ function E_A_S(){
 
 penColor_Eraser();
 
-picture.addEventListener('touchend', (e) => {
+picture.addEventListener('click', (e) => {
     imgOnOff = 1;
     let p = Math.floor(Math.random() * 15) + 1;
     canvasBackground.setAttribute('style', `background-image: url("./images/IMG${p}.jpg")`);
@@ -176,18 +176,18 @@ picture.addEventListener('touchend', (e) => {
     E_A_S();
 });
 
-pen.addEventListener('touchend', () => {
+pen.addEventListener('click', () => {
         pencolors = 0;
     });
-rainbow.addEventListener('touchstart', () => {
+rainbow.addEventListener('click', () => {
         pencolors = 1;
     });
 
-erase.addEventListener('touchstart', (e) => {
+erase.addEventListener('click', (e) => {
         pencolors = 2;
         e.target.classList.add('playing');
     });
-containerBackground.addEventListener('touchstart', () => {
+containerBackground.addEventListener('click', () => {
     arr.forEach((divs) => {
         divs.removeAttribute('style');
     });
@@ -198,7 +198,7 @@ containerBackground.addEventListener('touchstart', () => {
 
 E_A_S();
 
-pixelsNumber.addEventListener('touchend', () => {
+pixelsNumber.addEventListener('click', () => {
     arr.forEach((divs) => {
         container.removeChild(divs);
     });
@@ -206,16 +206,16 @@ pixelsNumber.addEventListener('touchend', () => {
 });
 
 
-btn.addEventListener('touchstart', (e) => {
+btn.addEventListener('click', (e) => {
     e.target.classList.add('playing');
     clearCanvas();
 });
 
-btn.addEventListener('touchend', (e) => {
+btn.addEventListener('click', (e) => {
     e.target.classList.remove('playing');
 });
 
-erase.addEventListener('touchend', (e) => {
+erase.addEventListener('click', (e) => {
     e.target.classList.remove('playing');
 }); 
 

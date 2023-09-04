@@ -15,7 +15,7 @@ body {
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    width: 96vw;
+    width: auto;
     background-color: rgb(255, 253, 202);
 }
 h1 {
@@ -30,7 +30,7 @@ h1 {
     display: block;
     margin: 5px;
     padding: 2px;
-    width: 90vw;
+    width: auto;
     height: max-content;
    
 }
@@ -104,8 +104,8 @@ label, #img {
 .container {
     display: grid;
     padding: 3px;
-    width: 90vw;
-    height: 90vw;
+    width: 80vh;
+    height: 80vh;
 
 /*background-color: var(--back);
 */
