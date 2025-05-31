@@ -46,8 +46,6 @@ function hueFunction(){
         return hueOnOff = 0;
         } else { return hueOnOff = 1;}
 }
-
-
 /*sound.addEventListener('click', () => {
     soundOnOff();
 });*/
@@ -76,7 +74,7 @@ function canvasMaker(){
         container.style.backgroundColor = 'var(--back)';
 
         }else if (imgOnOff == 1){ 
-            divs.setAttribute('style', `background: ${pen.value}; border: 2px solid white; border-style: outset`);
+            divs.setAttribute('style', `background: ${pen.value}; border: 0px solid white; border-style: outset`);
 
         }
     }
@@ -114,7 +112,7 @@ function E_A_S(){
             if ( x == 6){ x = 0};
                 if (pencolors == 0){
                    div.setAttribute('style', `background: ${pen.value};
-                    border: 2px solid white; border-style: inset`);
+                    border: 0px solid white; border-style: inset`);
                     div.style.opacity = (`${o}%`);
               
                 } else if (pencolors == 1){ 
@@ -146,7 +144,7 @@ function E_A_S(){
 
          if (pencolors == 0){
                 div.setAttribute('style', `background: ${pen.value}; transition: 0.7s;
-                border: 2px solid white; border-style: inset`);
+                border: 0px solid white; border-style: inset`);
                 div.style.opacity = (`${o}%`);
 
             } else if (pencolors == 1){
