@@ -94,8 +94,17 @@ function E_A_S(){
 
     gridBorderAndBackground();
     canvasMaker();
-
     arr = Array.from(document.querySelectorAll('.color'));
+let mobile = false
+
+if("ontouchstart" in document.documentElement){
+    console.log('your devaice is touch device')
+    mobile = true;
+}else{
+    console.log('your divice is not a touch screen')
+    mobile = false
+}
+console.log(mobile)
     function penColor_Eraser(){
         let isDown = false;
         let x = 0;
@@ -127,44 +136,11 @@ function E_A_S(){
                 s3.play();
             } else{ return;} */
         }));
-                    ///touchstart event 
-                    arr.forEach((div) => div.addEventListener('ontouchstart', (e) => {
-                        isDown = true; 
-                         x = x + 1;
-            
-                        if (hueOnOff == 1) {
-                            o = div.style.opacity * 100 + 20;
-                            if ( o == 100){ o = 100}
-                        } else { o = 100};
-                    
-                        if ( x == 6){ x = 0};
-                            if (pencolors == 0){
-                               div.setAttribute('style', `background: ${pen.value};
-                                border: 0px solid white; border-style: inset`);
-                                div.style.opacity = (`${o}%`);
-                            
-                            } else if (pencolors == 1){ 
-                                    div.style.backgroundColor = `${rbw[x]}`;
-                                    div.style.opacity = (`100%`);
-                            
-                            } else if( pencolors == 2){
-                                div.removeAttribute('style');
-                            }
-                     /*   if( onoffSound == 1){
-                            s3.currentTime = 0;
-                            s3.play();
-                        } else{ return;} */
-                    }));
             arr.forEach((div) => div.addEventListener('mouseup', (e) => { //equivalent touchend event
                 isDown = false;
             }));
             // touchend event
-            arr.forEach((div) => div.addEventListener('ontouchend', (e) => {
-                isDown = false;
-            }));
-            
-                
-                    arr.forEach((div) => div.addEventListener('mouseenter', (e) => { //equivalent with touchmove
+            arr.forEach((div) => div.addEventListener('mouseenter', (e) => { //equivalent with touchmove
                         if(!isDown) return; //stop function to run
                         x = x + 1;
                         if ( x == 6){ x = 0}; 
@@ -190,49 +166,84 @@ function E_A_S(){
                         s4.currentTime = 0;
                         s4.play();
                     } else {return;}*/
-                    }));
-
-                arr.forEach((div) => div.addEventListener('ontouchmove', (e) => {
-                        if(!isDown) return; //stop function to run
-                        x = x + 1;
-                        if ( x == 6){ x = 0}; 
-            
-                        if (hueOnOff == 1) {
-                            o = div.style.opacity * 100 + 20;
-                            if ( o == 100){ o = 100}
-                        } else { o = 100};
-            
-            
-                     if (pencolors == 0){
-                            div.setAttribute('style', `background: ${pen.value}; transition: 0.7s;
-                            border: 0px solid white; border-style: inset`);
-                            div.style.opacity = (`${o}%`);
-            
-                        } else if (pencolors == 1){
-                          //  i = Math.floor(Math.random() * 6);
-                            div.style.backgroundColor = `${rbw[x]}`;
-                            div.style.opacity = (`100`);
-                            div.style.transition = '0.9s';
-                        }else if (pencolors == 2){
-                            div.removeAttribute('style');
-                        }
-                  /*  if( onoffSound == 1){ 
-                        s4.currentTime = 0;
-                        s4.play();
-                    } else {return;}*/
-                }));
-            
+                    }));            
         arr.forEach((div) => div.addEventListener('mouseup', (e) => { //equivalent touchend event
             isDown = false;
         }));
-        // touchend event
-        arr.forEach((div) => div.addEventListener('ontouchend', (e) => {
+    }
+//mobile touch screen
+function penColor_EraserMobile(){
+    let isDown = false;
+    let x = 0;
+    let o = 20;
+    arr.forEach((div) => div.addEventListener('touchstart', (e) => {
+        isDown = true; 
+         x = x + 1;
+        
+        if (hueOnOff == 1) {
+            o = div.style.opacity * 100 + 20;
+            if ( o == 100){ o = 100}
+        } else { o = 100};
+
+        if ( x == 6){ x = 0};
+            if (pencolors == 0){
+               div.setAttribute('style', `background: ${pen.value};
+                border: 0px solid white; border-style: inset`);
+                div.style.opacity = (`${o}%`);
+          
+            } else if (pencolors == 1){ 
+                    div.style.backgroundColor = `${rbw[x]}`;
+                    div.style.opacity = (`100%`);
+
+            } else if( pencolors == 2){
+                div.removeAttribute('style');
+            }
+     /*   if( onoffSound == 1){
+            s3.currentTime = 0;
+            s3.play();
+        } else{ return;} */
+    }));
+        arr.forEach((div) => div.addEventListener('touchcancel', (e) => { //equivalent touchend event
             isDown = false;
         }));
-        //touchmove event 
-    }
+        // touchend event
+        arr.forEach((div) => div.addEventListener('touchmove', (e) => { //equivalent with touchmove
+                    if(!isDown) return; //stop function to run
+                    x = x + 1;
+                    if ( x == 6){ x = 0}; 
+        
+                    if (hueOnOff == 1) {
+                        o = div.style.opacity * 100 + 20;
+                        if ( o == 100){ o = 100}
+                    } else { o = 100};
+                 if (pencolors == 0){
+                        div.setAttribute('style', `background: ${pen.value}; transition: 0.7s;
+                        border: 0px solid white; border-style: inset`);
+                        div.style.opacity = (`${o}%`);
+        
+                    } else if (pencolors == 1){
+                      //  i = Math.floor(Math.random() * 6);
+                        div.style.backgroundColor = `${rbw[x]}`;
+                        div.style.opacity = (`100`);
+                        div.style.transition = '0.9s';
+                    }else if (pencolors == 2){
+                        div.removeAttribute('style');
+                    }
+              /*  if( onoffSound == 1){ 
+                    s4.currentTime = 0;
+                    s4.play();
+                } else {return;}*/
+                }));            
+    arr.forEach((div) => div.addEventListener('touchend', (e) => { //equivalent touchend event
+        isDown = false;
+    }));
+}
 
-penColor_Eraser();
+if(mobile){
+    penColor_EraserMobile();
+}else{
+    penColor_Eraser()
+}
 
 picture.addEventListener('click', (e) => {
     imgOnOff = 1;
