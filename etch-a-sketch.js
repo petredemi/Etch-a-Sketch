@@ -128,7 +128,7 @@ function E_A_S(){
             } else{ return;} */
         }));
                     ///touchstart event 
-                    arr.forEach((div) => div.addEventListener('mousedown', (e) => {
+                    arr.forEach((div) => div.addEventListener('touchstart', (e) => {
                         isDown = true; 
                          x = x + 1;
             
