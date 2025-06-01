@@ -128,7 +128,7 @@ function E_A_S(){
             } else{ return;} */
         }));
                     ///touchstart event 
-                    arr.forEach((div) => div.addEventListener('touchstart', (e) => {
+                    arr.forEach((div) => div.addEventListener('ontouchstart', (e) => {
                         isDown = true; 
                          x = x + 1;
             
@@ -159,7 +159,7 @@ function E_A_S(){
                 isDown = false;
             }));
             // touchend event
-            arr.forEach((div) => div.addEventListener('touchend', (e) => {
+            arr.forEach((div) => div.addEventListener('ontouchend', (e) => {
                 isDown = false;
             }));
             
@@ -192,7 +192,7 @@ function E_A_S(){
                     } else {return;}*/
                     }));
 
-                arr.forEach((div) => div.addEventListener('touchmove', (e) => {
+                arr.forEach((div) => div.addEventListener('ontouchmove', (e) => {
                         if(!isDown) return; //stop function to run
                         x = x + 1;
                         if ( x == 6){ x = 0}; 
@@ -226,7 +226,7 @@ function E_A_S(){
             isDown = false;
         }));
         // touchend event
-        arr.forEach((div) => div.addEventListener('touchend', (e) => {
+        arr.forEach((div) => div.addEventListener('ontouchend', (e) => {
             isDown = false;
         }));
         //touchmove event 
