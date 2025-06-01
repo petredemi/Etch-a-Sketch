@@ -100,11 +100,16 @@ let mobile = false
 if("ontouchstart" in document.documentElement){
     console.log('your devaice is touch device')
     mobile = true;
+    document.getElementById('desktop').innerHTML = 'touchscreen'
+
 }else{
     console.log('your divice is not a touch screen')
     mobile = false
+    document.getElementById('desktop').innerHTML = 'not a touch screen'
+
 }
 console.log(mobile)
+
     function penColor_Eraser(){
         let isDown = false;
         let x = 0;
