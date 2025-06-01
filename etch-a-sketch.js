@@ -127,11 +127,46 @@ function E_A_S(){
                 s3.play();
             } else{ return;} */
         }));
-        arr.forEach((div) => div.addEventListener('mouseup', (e) => {
+        arr.forEach((div) => div.addEventListener('mouseup', (e) => { //equivalent touchend event
             isDown = false;
         }));
+        // touchend event
+        arr.forEach((div) => div.addEventListener('touchend', (e) => {
+            isDown = false;
+        }));
+
     
-        arr.forEach((div) => div.addEventListener('mouseenter', (e) => {
+        arr.forEach((div) => div.addEventListener('mouseenter', (e) => { //equivalent with touchmove
+            if(!isDown) return; //stop function to run
+            x = x + 1;
+            if ( x == 6){ x = 0}; 
+
+            if (hueOnOff == 1) {
+                o = div.style.opacity * 100 + 20;
+                if ( o == 100){ o = 100}
+            } else { o = 100};
+
+
+         if (pencolors == 0){
+                div.setAttribute('style', `background: ${pen.value}; transition: 0.7s;
+                border: 0px solid white; border-style: inset`);
+                div.style.opacity = (`${o}%`);
+
+            } else if (pencolors == 1){
+              //  i = Math.floor(Math.random() * 6);
+                div.style.backgroundColor = `${rbw[x]}`;
+                div.style.opacity = (`100`);
+                div.style.transition = '0.9s';
+            }else if (pencolors == 2){
+                div.removeAttribute('style');
+            }
+      /*  if( onoffSound == 1){ 
+            s4.currentTime = 0;
+            s4.play();
+        } else {return;}*/
+        }));
+        //touchmove event 
+        arr.forEach((div) => div.addEventListener('touchmove', (e) => {
             if(!isDown) return; //stop function to run
             x = x + 1;
             if ( x == 6){ x = 0}; 
