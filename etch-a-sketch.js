@@ -212,7 +212,7 @@ function penColor_EraserMobile(){
           //  isDown = false;
        // }));
         // touchend event
-        arr.forEach((div) => div.addEventListener('touchmove', (e) => { //equivalent with touchmove
+        arr.forEach((div) => div.addEventListener('touchstart', (e) => { //equivalent with touchmove
                     if(!isDown) return; //stop function to run
                     x = x + 1;
                     if ( x == 6){ x = 0}; 
