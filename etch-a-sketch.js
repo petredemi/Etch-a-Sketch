@@ -208,9 +208,9 @@ function penColor_EraserMobile(){
             s3.play();
         } else{ return;} */
     }));
-        arr.forEach((div) => div.addEventListener('touchcancel', (e) => { //equivalent touchend event
-            isDown = false;
-        }));
+     //   arr.forEach((div) => div.addEventListener('touchcancel', (e) => { //equivalent touchend event
+          //  isDown = false;
+       // }));
         // touchend event
         arr.forEach((div) => div.addEventListener('touchmove', (e) => { //equivalent with touchmove
                     if(!isDown) return; //stop function to run
@@ -239,9 +239,9 @@ function penColor_EraserMobile(){
                     s4.play();
                 } else {return;}*/
                 }));            
-    arr.forEach((div) => div.addEventListener('touchend', (e) => { //equivalent touchend event
-        isDown = false;
-    }));
+  //  arr.forEach((div) => div.addEventListener('touchend', (e) => { //equivalent touchend event
+     //   isDown = false;
+  //  }));
 }
 
 if(mobile){
