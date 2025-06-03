@@ -34,7 +34,7 @@ const s9 = document.querySelector('#s9');
 //let onoffSound = 1;
 let imgOnOff = 0;
 let pencolors = 0;
-let hueOnOff = 1;
+let hueOnOff = 0;
 
 /*function soundOnOff(){
     if(sound.checked == true){
@@ -49,7 +49,7 @@ function hueFunction(){
 /*sound.addEventListener('click', () => {
     soundOnOff();
 });*/
-
+hueFunction()
 hue.addEventListener('click', (e) => {
     hueFunction();
     console.log(e);
