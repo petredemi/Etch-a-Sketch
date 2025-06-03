@@ -241,12 +241,7 @@ function penColor_EraserMobile(){
      //   isDown = false;
   //  }));
 }
-
-if(mobile){
-    penColor_EraserMobile();
-}else{
     penColor_Eraser()
-}
 
 picture.addEventListener('click', (e) => {
     imgOnOff = 1;
