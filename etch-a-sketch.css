@@ -1,13 +1,14 @@
 body {
-  margin: 10px;
+  margin: 0px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  padding: 0px;
   width: 98vw;
 }
 .mycanvas {
-  border: 3px solid rgb(11, 10, 10);
+  border: 2px solid rgb(11, 10, 10);
   border-style: outset;
   display: flex;
   justify-content: center;
@@ -16,7 +17,6 @@ body {
   width: auto;
   background: linear-gradient(to right, rgb(227, 224, 224), white, rgb(220, 217, 217), white, rgb(222, 219, 219));
   border-radius: 3%;
-
 }
 h1 {
   color: #ff0707;
@@ -32,7 +32,6 @@ h1 {
   padding: 5px;
   width: auto;
   height: max-content;
- 
 }
 
 .control {
@@ -152,7 +151,7 @@ input {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #399afb;
+  background-color: #f4f8fa;
   -webkit-transition: .4s;
   transition: .4s;
 }
@@ -163,17 +162,17 @@ input {
   width: 18px;
   left: 2px;
   bottom: 0px;
-  background-color: white;
+  background-color: rgb(246, 241, 241);
   border: 1px solid black;
   -webkit-transition: .4s;
   transition: .4s;
 }
 
 input:checked + .slider {
-  background-color: #e4eff1;
+  background-color: #0dbae5;
 }
 input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
+  box-shadow: 0 0 1px #fafbfc;
 }
 input:checked + .slider:before {
   -webkit-transform: translateX(26px);
@@ -196,6 +195,7 @@ footer{
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-width: 300px;
 
 }
 footer >div{
@@ -224,6 +224,21 @@ footer > a{
 @media(max-width: 450px){
   .mycanvas{
     scale: 0.9;
+    margin-top: 0px;
+    margin-bottom: 1px;
+    transform: translateY(-20px);
+  }
+  h1{
+    font-size: 2rem;
+    margin-bottom: 5px;
+  }
+  #desktop{
+    margin-bottom: 1px;
+  }
+  footer{
+    margin-top: 0px;
+    transform: translateY(-20px);
+    height: fit-content;
   }
   .canvas{
     max-width: 400px;

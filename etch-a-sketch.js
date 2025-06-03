@@ -42,9 +42,9 @@ let hueOnOff = 1;
         } else { return onoffSound = 1;}
 }*/
 function hueFunction(){
-    if(hue.checked == true){
-        return hueOnOff = 0;
-        } else { return hueOnOff = 1;}
+    if(hue.checked == false){
+        return hueOnOff = 1;
+        } else { return hueOnOff = 0;}
 }
 /*sound.addEventListener('click', () => {
     soundOnOff();
@@ -118,7 +118,7 @@ console.log(mobile)
             isDown = true; 
              x = x + 1;
             
-            if (hueOnOff == 1) {
+            if (hueOnOff == 0) {
                 o = div.style.opacity * 100 + 20;
                 if ( o == 100){ o = 100}
             } else { o = 100};
@@ -150,7 +150,7 @@ console.log(mobile)
                         x = x + 1;
                         if ( x == 6){ x = 0}; 
             
-                        if (hueOnOff == 1) {
+                        if (hueOnOff == 0) {
                             o = div.style.opacity * 100 + 20;
                             if ( o == 100){ o = 100}
                         } else { o = 100};
@@ -183,13 +183,11 @@ function penColor_EraserMobile(){
     let o = 20;
     arr.forEach((div) => div.addEventListener('touchstart', (e) => {
         isDown = true; 
-         x = x + 1;
-        
+         x = x + 1;        
         if (hueOnOff == 1) {
             o = div.style.opacity * 100 + 20;
             if ( o == 100){ o = 100}
         } else { o = 100};
-
         if ( x == 6){ x = 0};
             if (pencolors == 0){
                div.setAttribute('style', `background: ${pen.value};
@@ -212,33 +210,33 @@ function penColor_EraserMobile(){
           //  isDown = false;
        // }));
         // touchend event
-        arr.forEach((div) => div.addEventListener('touchend', (e) => { //equivalent with touchmove
-                    if(!isDown) return; //stop function to run
-                    x = x + 1;
-                    if ( x == 6){ x = 0}; 
-        
-                    if (hueOnOff == 1) {
-                        o = div.style.opacity * 100 + 20;
-                        if ( o == 100){ o = 100}
-                    } else { o = 100};
-                 if (pencolors == 0){
-                        div.setAttribute('style', `background: ${pen.value}; transition: 0.7s;
-                        border: 0px solid white; border-style: inset`);
-                        div.style.opacity = (`${o}%`);
-        
-                    } else if (pencolors == 1){
-                      //  i = Math.floor(Math.random() * 6);
-                        div.style.backgroundColor = `${rbw[x]}`;
-                        div.style.opacity = (`100`);
-                        div.style.transition = '0.9s';
-                    }else if (pencolors == 2){
-                        div.removeAttribute('style');
-                    }
-              /*  if( onoffSound == 1){ 
-                    s4.currentTime = 0;
-                    s4.play();
-                } else {return;}*/
-                }));            
+       // arr.forEach((div) => div.addEventListener('touchend', (e) => { //equivalent with touchmove
+       //             if(!isDown) return; //stop function to run
+       //             x = x + 1;
+       //             if ( x == 6){ x = 0}; 
+       // 
+       //             if (hueOnOff == 1) {
+       //                 o = div.style.opacity * 100 + 20;
+       //                 if ( o == 100){ o = 100}
+       //             } else { o = 100};
+       //          if (pencolors == 0){
+       //                 div.setAttribute('style', `background: ${pen.value}; transition: 0.7s;
+       //                 border: 0px solid white; border-style: inset`);
+       //                 div.style.opacity = (`${o}%`);
+       // 
+       //             } else if (pencolors == 1){
+       //               //  i = Math.floor(Math.random() * 6);
+       //                 div.style.backgroundColor = `${rbw[x]}`;
+       //                 div.style.opacity = (`100`);
+       //                 div.style.transition = '0.9s';
+       //             }else if (pencolors == 2){
+       //                 div.removeAttribute('style');
+       //             }
+       //       /*  if( onoffSound == 1){ 
+       //             s4.currentTime = 0;
+       //             s4.play();
+       //         } else {return;}*/
+       //         }));            
   //  arr.forEach((div) => div.addEventListener('touchend', (e) => { //equivalent touchend event
      //   isDown = false;
   //  }));
