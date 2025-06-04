@@ -75,6 +75,7 @@ function canvasMaker(){
             divs.setAttribute('style', `background: ${pen.value}; border: 0px solid white; border-style: outset`);
         }
     }
+
 }
 
 function E_A_S(){
@@ -91,6 +92,7 @@ function E_A_S(){
 
     gridBorderAndBackground();
     canvasMaker();
+    let color = document.querySelectorAll('.color');
     arr = Array.from(document.querySelectorAll('.color'));
 let mobile = false
 
@@ -172,8 +174,14 @@ console.log(mobile)
         arr.forEach((div) => div.addEventListener('mouseup', (e) => { //equivalent touchend event
             isDown = false;
         }));
+    color.forEach((div) => div.addEventListener('touchmove', (event) =>{
+            let x = event.touches[0].target;
+            x.setAttribute('style', 'background-color:red')
+            console.log(x)
+        }))
+
     }
-  //  penColor_Eraser()
+    penColor_Eraser()
     
 
 picture.addEventListener('click', (e) => {
@@ -183,7 +191,7 @@ picture.addEventListener('click', (e) => {
     arr.forEach((divs) => {
         container.removeChild(divs);
     });
-    E_A_S();
+   // E_A_S();
 });
 
 pen.addEventListener('click', () => {
@@ -229,21 +237,4 @@ erase.addEventListener('click', (e) => {
     e.target.classList.remove('playing');
 }); 
 
-function aa(x){
-         x.setAttribute('style', 'background-color:red')
-}
-function getTagname(event) {
-  let x = event.touches[0].target;
-  //x.setAttribute('style', 'background-color:red')
-  aa(x)
-  console.log(x)
-}
-let color = document.querySelectorAll('.color');
-//canvasBackground.addEventListener('touchmove', getTagname);
-color.forEach((div) => div.addEventListener('touchstart', () =>{
-    div.style.backgroundColor = 'red'
-}))
-color.forEach((div) => div.addEventListener('touchmove', () =>{
-    div.style.backgroundColor = 'red'
-}))
 
