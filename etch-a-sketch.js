@@ -55,7 +55,6 @@ hue.addEventListener('click', (e) => {
     console.log(e);
 });
 
-
 function clearCanvas(){
     arr.forEach((divs) => {
     divs.style.backgroundColor = '';
@@ -69,13 +68,11 @@ function canvasMaker(){
         divs = document.createElement('div');
         divs.classList.add('color');
         container.appendChild (divs);
-        
         if(imgOnOff == 0){
         container.style.backgroundColor = 'var(--back)';
 
         }else if (imgOnOff == 1){ 
             divs.setAttribute('style', `background: ${pen.value}; border: 0px solid white; border-style: outset`);
-
         }
     }
 }
@@ -176,72 +173,8 @@ console.log(mobile)
             isDown = false;
         }));
     }
-//mobile touch screen
-function penColor_EraserMobile(){
-    let isDown = false;
-    let x = 0;
-    let o = 20;
-    arr.forEach((div) => div.addEventListener('touchstart', (e) => {
-        isDown = true; 
-         x = x + 1;        
-        if (hueOnOff == 1) {
-            o = div.style.opacity * 100 + 20;
-            if ( o == 100){ o = 100}
-        } else { o = 100};
-        if ( x == 6){ x = 0};
-            if (pencolors == 0){
-               div.setAttribute('style', `background: ${pen.value};
-                border: 0px solid white; border-style: inset`);
-                div.style.opacity = (`${o}%`);
-          
-            } else if (pencolors == 1){ 
-                    div.style.backgroundColor = `${rbw[x]}`;
-                    div.style.opacity = (`100%`);
-
-            } else if( pencolors == 2){
-                div.removeAttribute('style');
-            }
-     /*   if( onoffSound == 1){
-            s3.currentTime = 0;
-            s3.play();
-        } else{ return;} */
-    }));
-     //   arr.forEach((div) => div.addEventListener('touchcancel', (e) => { //equivalent touchend event
-          //  isDown = false;
-       // }));
-        // touchend event
-       // arr.forEach((div) => div.addEventListener('touchend', (e) => { //equivalent with touchmove
-       //             if(!isDown) return; //stop function to run
-       //             x = x + 1;
-       //             if ( x == 6){ x = 0}; 
-       // 
-       //             if (hueOnOff == 1) {
-       //                 o = div.style.opacity * 100 + 20;
-       //                 if ( o == 100){ o = 100}
-       //             } else { o = 100};
-       //          if (pencolors == 0){
-       //                 div.setAttribute('style', `background: ${pen.value}; transition: 0.7s;
-       //                 border: 0px solid white; border-style: inset`);
-       //                 div.style.opacity = (`${o}%`);
-       // 
-       //             } else if (pencolors == 1){
-       //               //  i = Math.floor(Math.random() * 6);
-       //                 div.style.backgroundColor = `${rbw[x]}`;
-       //                 div.style.opacity = (`100`);
-       //                 div.style.transition = '0.9s';
-       //             }else if (pencolors == 2){
-       //                 div.removeAttribute('style');
-       //             }
-       //       /*  if( onoffSound == 1){ 
-       //             s4.currentTime = 0;
-       //             s4.play();
-       //         } else {return;}*/
-       //         }));            
-  //  arr.forEach((div) => div.addEventListener('touchend', (e) => { //equivalent touchend event
-     //   isDown = false;
-  //  }));
-}
-    penColor_Eraser()
+  //  penColor_Eraser()
+    
 
 picture.addEventListener('click', (e) => {
     imgOnOff = 1;
@@ -269,9 +202,9 @@ containerBackground.addEventListener('click', () => {
         divs.removeAttribute('style');
     });
     container.style.backgroundColor = 'var(--back)';
-});
+    });
+}
 
-}   
 
 E_A_S();
 
@@ -296,4 +229,21 @@ erase.addEventListener('click', (e) => {
     e.target.classList.remove('playing');
 }); 
 
+function aa(x){
+         x.setAttribute('style', 'background-color:red')
+}
+function getTagname(event) {
+  let x = event.touches[0].target;
+  //x.setAttribute('style', 'background-color:red')
+  aa(x)
+  console.log(x)
+}
+let color = document.querySelectorAll('.color');
+//canvasBackground.addEventListener('touchmove', getTagname);
+color.forEach((div) => div.addEventListener('touchstart', () =>{
+    div.style.backgroundColor = 'red'
+}))
+color.forEach((div) => div.addEventListener('touchmove', () =>{
+    div.style.backgroundColor = 'red'
+}))
 
