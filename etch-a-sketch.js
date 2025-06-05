@@ -72,7 +72,7 @@ function canvasMaker(){
         container.style.backgroundColor = 'var(--back)';
 
         }else if (imgOnOff == 1){ 
-            divs.setAttribute('style', `background: ${pen.value}; border: 0px solid white; border-style: outset`);
+            divs.setAttribute('style', `background: ${pen.value}; border: 1px solid white; border-style: outset`);
         }
     }
 
@@ -109,7 +109,7 @@ if("ontouchstart" in document.documentElement){
 }
 console.log(mobile)
 
-    function penColor_Eraser(){
+function penColor_Eraser(){
         let isDown = false;
         let x = 0;
         let o = 20;
@@ -174,13 +174,13 @@ console.log(mobile)
         arr.forEach((div) => div.addEventListener('mouseup', (e) => { //equivalent touchend event
             isDown = false;
         }));
-    color.forEach((div) => div.addEventListener('touchmove', (event) =>{
-            let x = event.touches[0].target;
-            x.setAttribute('style', 'background-color:red')
-            console.log(x)
-        }))
+    //color.forEach((div) => div.addEventListener('touchmove', (event) =>{
+    //        let x = event.touches[0].target;
+    //        x.setAttribute('style', 'background-color:red')
+    //        console.log(x)
+    //    }))
 
-    }
+}
     penColor_Eraser()
     
 
@@ -191,7 +191,7 @@ picture.addEventListener('click', (e) => {
     arr.forEach((divs) => {
         container.removeChild(divs);
     });
-   // E_A_S();
+    E_A_S();
 });
 
 pen.addEventListener('click', () => {
