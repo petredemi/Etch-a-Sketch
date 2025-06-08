@@ -233,7 +233,7 @@ E_A_S();
 //ukyukyuikluylkuil
 
 
-pixelsNumber.addEventListener('click', () => {
+pixelsNumber.addEventListener('change', () => {
     arr.forEach((divs) => {
         container.removeChild(divs);
     });
