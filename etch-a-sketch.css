@@ -7,6 +7,7 @@ body {
   padding: 0px;
   width: 98vw;
 }
+
 .mycanvas {
   border: 2px solid rgb(11, 10, 10);
   border-style: outset;
@@ -15,7 +16,7 @@ body {
   align-items: center;
   flex-wrap: wrap;
   width: auto;
-  background: linear-gradient(to right, rgb(227, 224, 224), white, rgb(220, 217, 217), white, rgb(222, 219, 219));
+  background: linear-gradient(to right, rgb(227, 224, 224), #ffffff, rgb(220, 217, 217), white, rgb(222, 219, 219));
   border-radius: 3%;
 }
 h1 {
@@ -46,6 +47,9 @@ h1 {
   grid-template-columns: 2 1fr;
   width: auto;
   height: auto;
+}
+.mobile{
+  background-color: #ff0707;
 }
 label, #img {
   font-size: 1rem;
@@ -98,7 +102,7 @@ flex-direction: column;
 
 :root {
   --pen: #4cf0a3ef;
-  --back: #10c4ec;
+  --back: #ffffff;
   --grid: 0.1px ;
 }
 .container {

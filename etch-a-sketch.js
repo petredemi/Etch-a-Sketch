@@ -6,7 +6,7 @@ let arr;
 
 const btn = document.querySelector('#btn');
 const erase = document.querySelector('#ruber');
-const pixelsNumber = document.querySelector('#pixels');
+let pixelsNumber = document.querySelector('#pixels');
 const inputs = document.querySelectorAll('#grid, #back');
 //const sound = document.querySelector('#sound');
 const picture = document.querySelector('#img');
@@ -62,6 +62,7 @@ function clearCanvas(){
     });
 } 
 
+
 function canvasMaker(){
     for( let i = 1; i <= canvas ** 2; i++){
         container.setAttribute('style', `diplay: grid; grid-template-columns:repeat(${canvas}, 1fr)`);    
@@ -75,14 +76,13 @@ function canvasMaker(){
             divs.setAttribute('style', `background: ${pen.value}; border: 1px solid white; border-style: outset`);
         }
     }
-
 }
 
 function E_A_S(){
     
     canvas = pixels.value;
     function handelUpdate(){
-        const suffix = this.dataset .sizing || '';
+        const suffix = this.dataset.sizing || '';
         document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix);
     }
     function gridBorderAndBackground(){
@@ -92,8 +92,8 @@ function E_A_S(){
 
     gridBorderAndBackground();
     canvasMaker();
-    let color = document.querySelectorAll('.color');
-    arr = Array.from(document.querySelectorAll('.color'));
+    arr = Array.from(document.querySelectorAll('.container >div'));
+  //  console.log(arr)
 let mobile = false
 
 if("ontouchstart" in document.documentElement){
@@ -102,7 +102,7 @@ if("ontouchstart" in document.documentElement){
     document.getElementById('desktop').innerHTML = 'touchscreen'
 
 }else{
-    console.log('your divice is not a touch screen')
+    console.log('your device is not a touch screen')
     mobile = false
     document.getElementById('desktop').innerHTML = 'not a touch screen'
 
@@ -111,12 +111,11 @@ console.log(mobile)
 
 function penColor_Eraser(){
         let isDown = false;
-        let x = 0;
-        let o = 20;
+        let x = 0; // for rainbow colors arrays
+        let o = 20; //opacity of pen - for now working only for mouse
         arr.forEach((div) => div.addEventListener('mousedown', (e) => {
             isDown = true; 
              x = x + 1;
-            
             if (hueOnOff == 0) {
                 o = div.style.opacity * 100 + 20;
                 if ( o == 100){ o = 100}
@@ -173,16 +172,33 @@ function penColor_Eraser(){
                     }));            
         arr.forEach((div) => div.addEventListener('mouseup', (e) => { //equivalent touchend event
             isDown = false;
-        }));
-    //color.forEach((div) => div.addEventListener('touchmove', (event) =>{
-    //        let x = event.touches[0].target;
-    //        x.setAttribute('style', 'background-color:red')
-    //        console.log(x)
-    //    }))
-
-}
-    penColor_Eraser()
-    
+        })); 
+    function mobileScreen(){
+       container.addEventListener('touchmove', (event) => {
+            event.preventDefault()
+            var touch = event.touches[0]
+            var elem = document.elementFromPoint(touch.clientX, touch.clientY)
+            let xx = elem.getAttribute('class') // get atribute of div
+     //           console.log(color)
+                console.log(xx)
+            if(xx == 'color'){
+                if(pencolors == 0){ 
+                elem.style.backgroundColor = `${pen.value}`
+                }else if( pencolors == 1){
+                    x = x + 1
+                    if( x == 6){ x = 0;} 
+                    elem.style.backgroundColor = `${rbw[x]}`
+                }
+                else if(pencolors == 2){
+                   //  elem.style.backgroundColor = `${rbw(x)}`
+                   elem.removeAttribute('style')
+                }
+            }
+        })
+    }
+     mobileScreen()    
+    }
+penColor_Eraser()
 
 picture.addEventListener('click', (e) => {
     imgOnOff = 1;
@@ -213,8 +229,9 @@ containerBackground.addEventListener('click', () => {
     });
 }
 
-
 E_A_S();
+//ukyukyuikluylkuil
+
 
 pixelsNumber.addEventListener('click', () => {
     arr.forEach((divs) => {
