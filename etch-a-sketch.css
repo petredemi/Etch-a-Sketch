@@ -25,10 +25,9 @@ h1 {
   font-size: 45px;
   margin-bottom: 0px;
   margin-top: 10px;
-  border: 1px solid red;
 }
 .canvas {
-  border: 2px solid black;
+  border: 2px solid hsl(0, 0%, 0%);
   display: block;
   margin: 10px;
   margin-top: 1px;
@@ -42,10 +41,16 @@ h1 {
   font-size: 1rem;
   visibility: hidden;
 }
+.settings{
+  display: flex;
+  border: 1px solid red;
+  
+}
 .control {
   margin: 15px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-right: 5px;
   border: 1px solid black;
   background-color: darkcyan;
   border-radius: 10px;
@@ -54,6 +59,7 @@ h1 {
   grid-template-columns: 2 1fr;
   width: auto;
   height: auto;
+  border: 1px solid red;
 }
 .mobile{
   background-color: #ff0707;
@@ -61,7 +67,7 @@ h1 {
 label, #img {
   font-size: 1rem;
   font-family: Arial;
-  color: hsla(277, 88%, 53%, 0.9);
+  color: hsla(300, 7%, 97%, 0.996);
   padding-left: 1px;
   text-shadow: 1px -1px 1px hsla(120, 3%, 7%, 0.966);
   margin: 3px;
@@ -71,10 +77,11 @@ label, #img {
   border-radius: 5px;
 }
 #img {
-height: 25px;
-font-size: 1rem;
+font-size: 0.9rem;
 text-align: center;
-max-width: 140px;
+width: 65px;
+height: 65px;
+color: blueviolet;
 }
 #pen {
 border: 1px solid rgb(248, 60, 60);
@@ -89,14 +96,23 @@ flex-wrap: wrap;
 height: auto;
 width: auto;
 flex-direction: column;
+align-items: end;
+}
+.btns{
+  max-width: 80px;
+  border: 1px solid red;
+  margin: 10px;
+  margin-left: 1px;
+
 }
 
 #btn, #ruber{
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: 4s00;
   padding: 1px;
   margin: 5px;
-  max-width: 130px;
+  width: 60px;
+  height: 60px;
   border: 1px  solid #307ae8;
   border-radius: 10px;
   transition: all 0.1s ease;
@@ -127,7 +143,7 @@ flex-direction: column;
 }
 
 input {
-  width: 60px;
+  width: 45px;
   font-size: 1rem;
   display: inline-flex;
   margin-left: 10px;
@@ -139,8 +155,9 @@ input {
 #rainbow {
   font-size: 16px;
   color: #330399;
-  background: #fdf5c0;
+  background-image: linear-gradient(50deg, blue, yellow, rgb(224, 54, 54), green);
   margin: 3px;
+  width: 45px;
 }
 
 #switch {

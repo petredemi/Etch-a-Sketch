@@ -243,6 +243,7 @@ pixelsNumber.addEventListener('change', () => {
 
 btn.addEventListener('click', (e) => {
     e.target.classList.add('playing');
+    erase.classList.remove('playing')
     clearCanvas();
 });
 

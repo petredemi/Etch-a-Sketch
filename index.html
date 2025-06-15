@@ -22,6 +22,7 @@
             <div class = 'container'>
             </div>
         </div>
+        <div class="settings">
         <div class = 'control'>
 
           <!--  <div> sound on/off
@@ -30,33 +31,37 @@
                     <span class = 'slider round'></span>
                 </label>
             </div> -->
-            <div> hue effect
-                <label id = 'switch' for = 'hue'>
-                    <input type = 'checkbox' id = 'hue'>
-                    <span class = 'slider round'></span>
+                <div> hue effect
+                    <label id = 'switch' for = 'hue'>
+                        <input type = 'checkbox' id = 'hue'>
+                        <span class = 'slider round'></span>
+                    </label>
+                </div>
+                <label for = 'pixels'>Pixels:    
+                    <input  type = 'number' id = 'pixels' name = 'pixels' min= '4' max= '100' value = '20'>
+                </label>
+
+                <label for = 'grid'>Border: 
+                    <input  type = 'number' id = 'grid' name= 'grid' min= '0.0' max= '1.6' value = '0.4' step="0.4" data-sizing = 'px' >
+                </label>
+                <div id = 'pentype'>
+                    <label for = 'pen'>Pen :
+                        <input type = 'color' id = 'pen'  name = 'pen' value = '#000000' >
+                    </label>
+                    <button id = 'rainbow'>rgb</button>
+
+                </div>
+
+                <label for = 'back'>Canvas:
+                    <input  type = 'color' id = 'back' name = 'back'  value = '#ffffff' >
                 </label>
             </div>
-            <label for = 'pixels'>Pixel Number:    
-                <input  type = 'number' id = 'pixels' name = 'pixels' min= '4' max= '100' value = '20'>
-            </label>
-
-            <label for = 'grid'>Grid Border: 
-                <input  type = 'number' id = 'grid' name= 'grid' min= '0.0' max= '1.6' value = '0.4' step="0.4" data-sizing = 'px' >
-            </label>
-            <div id = 'pentype'>
-                <label for = 'pen'>Pen Color:
-                    <input type = 'color' id = 'pen'  name = 'pen' value = '#000000' >
-                </label>
-                <button id = 'rainbow'>Rainbow</button>
-
+            <div class="btns">
+                <button id = 'img'> Discover a Picture</button>
+                <button id = 'ruber'>Remove pixels</button>
+                <button id = 'btn'>Clear Canvas</button>
             </div>
-
-            <label for = 'back'>Background:
-                <input  type = 'color' id = 'back' name = 'back'  value = '#ffffff' >
-            </label>
-            <button id = 'img'> Discover a Picture</button>
-            <button id = 'ruber'>Remove pixels</button>
-            <button id = 'btn'>Clear Canvas</button>
+            
 
         </div>
         <audio id = 's1' src="sounds/boom.wav"></audio>
