@@ -75,12 +75,13 @@ label, #img {
   border-radius: 0px;
 }
 #img {
-font-size: 0.9rem;
+font-size: 0.85rem;
 text-align: center;
 width: 60px;
 height: 60px;
 color: blueviolet;
 border-radius: 10px;
+font-weight: 100;
 }
 #pen {
 display: inline-flex;
@@ -110,15 +111,11 @@ align-items: end;
   margin: 5px;
   width: 60px;
   height: 60px;
-  border: 1px  solid #307ae8;
+  border: 1pxk  solid #307ae8;
   border-radius: 10px;
   transition: all 0.1s ease;
 }
 
-.playing {
-  transform: scale(0.9);
-  background: rgb(72, 146, 236);
-}
 
 :root {
   --pen: #4cf0a3ef;
@@ -215,6 +212,15 @@ div {
   font-size: 18px;
   text-align: end;
 }
+
+.playing {
+  transform: scale(1);
+  background: rgb(72, 236, 97);
+  border: 6px solid black;
+  border-style:outset;
+  font-size: 0.8px;
+}
+
 footer{
   margin-top: 20px;
   display: flex;

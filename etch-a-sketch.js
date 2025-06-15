@@ -214,8 +214,10 @@ pen.addEventListener('click', () => {
         pencolors = 0;
         erase.classList.remove('playing')
     });
-rainbow.addEventListener('click', () => {
+rainbow.addEventListener('click', (e) => {
         pencolors = 1;
+        erase.classList.remove('playing');
+
     });
 
 erase.addEventListener('click', (e) => {
