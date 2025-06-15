@@ -97,14 +97,14 @@ function E_A_S(){
 let mobile = false
 
 if("ontouchstart" in document.documentElement){
-    console.log('your devaice is touch device')
+    console.log('your device is touch device')
     mobile = true;
-    document.getElementById('desktop').innerHTML = 'touchscreen'
+  //  document.getElementById('desktop').innerHTML = 'touchscreen'
 
 }else{
     console.log('your device is not a touch screen')
     mobile = false
-    document.getElementById('desktop').innerHTML = 'not a touch screen'
+  //  document.getElementById('desktop').innerHTML = 'not a touch screen'
 
 }
 console.log(mobile)

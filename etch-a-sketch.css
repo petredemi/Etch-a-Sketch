@@ -23,18 +23,25 @@ h1 {
   color: #ff0707;
   text-shadow: 2px 2px 2px black;
   font-size: 45px;
-  margin-bottom: 10px;
+  margin-bottom: 0px;
   margin-top: 10px;
+  border: 1px solid red;
 }
 .canvas {
   border: 2px solid black;
   display: block;
   margin: 10px;
+  margin-top: 1px;
   padding: 5px;
   width: auto;
   height: max-content;
 }
-
+.seo{
+  margin-top: 0px;
+  margin-bottom: 1px;
+  font-size: 1rem;
+  visibility: hidden;
+}
 .control {
   margin: 15px;
   padding-left: 20px;
