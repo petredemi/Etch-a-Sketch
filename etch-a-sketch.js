@@ -199,9 +199,9 @@ function penColor_Eraser(){
      mobileScreen()    
     }
 penColor_Eraser()
-
 picture.addEventListener('click', (e) => {
     imgOnOff = 1;
+    pencolors = 2
     let p = Math.floor(Math.random() * 15) + 1;
     canvasBackground.setAttribute('style', `background-image: url("./images/IMG${p}.jpg")`);
     arr.forEach((divs) => {
@@ -212,6 +212,7 @@ picture.addEventListener('click', (e) => {
 
 pen.addEventListener('click', () => {
         pencolors = 0;
+        erase.classList.remove('playing')
     });
 rainbow.addEventListener('click', () => {
         pencolors = 1;
@@ -227,11 +228,13 @@ containerBackground.addEventListener('click', () => {
     });
     container.style.backgroundColor = 'var(--back)';
     });
+   // pencolors = 0; // use pen color to draw , make active
+   // elem.style.backgroundColor = `${pen.value}`
 }
 
 E_A_S();
 //ukyukyuikluylkuil
-
+const delbtn = false;
 
 pixelsNumber.addEventListener('change', () => {
     arr.forEach((divs) => {
@@ -244,15 +247,24 @@ pixelsNumber.addEventListener('change', () => {
 btn.addEventListener('click', (e) => {
     e.target.classList.add('playing');
     erase.classList.remove('playing')
+    pencolors = 0;
     clearCanvas();
 });
 
 btn.addEventListener('click', (e) => {
     e.target.classList.remove('playing');
+    pencolors = 0;
+
 });
 
 erase.addEventListener('click', (e) => {
-    e.target.classList.remove('playing');
+    if(delbtn){
+        e.target.classList.remove('playing');
+        delbtn = true;
+    }else {
+        e.target.classList.add('playing')
+        delbtn = false;
+    }
 }); 
 
 

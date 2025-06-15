@@ -43,7 +43,6 @@ h1 {
 }
 .settings{
   display: flex;
-  border: 1px solid red;
   
 }
 .control {
@@ -59,7 +58,6 @@ h1 {
   grid-template-columns: 2 1fr;
   width: auto;
   height: auto;
-  border: 1px solid red;
 }
 .mobile{
   background-color: #ff0707;
@@ -74,17 +72,17 @@ label, #img {
   display: inline;
   text-align: end ;
   border: 1px solid rgb(7, 7, 168);
-  border-radius: 5px;
+  border-radius: 0px;
 }
 #img {
 font-size: 0.9rem;
 text-align: center;
-width: 65px;
-height: 65px;
+width: 60px;
+height: 60px;
 color: blueviolet;
+border-radius: 10px;
 }
 #pen {
-border: 1px solid rgb(248, 60, 60);
 display: inline-flex;
 padding-right: 2px;
 }
@@ -99,8 +97,7 @@ flex-direction: column;
 align-items: end;
 }
 .btns{
-  max-width: 80px;
-  border: 1px solid red;
+  max-width: 70px;
   margin: 10px;
   margin-left: 1px;
 
